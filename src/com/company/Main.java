@@ -5,5 +5,6 @@ public class Main {
     public static void main(String[] args) {
 	Spot tiles = new Spot();
 	tiles.makeSpots();
+	Piece pawn = new Pawn(true);
     }
 }

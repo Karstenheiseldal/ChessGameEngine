@@ -1,15 +1,28 @@
 package com.company;
 
 public abstract class Piece {
-    Boolean whitePiece = false;
-    Boolean killedPiece = false;
+    Boolean white = true; //Boolean to determine white/black (true/false)
+    Boolean killedPiece = false; //to determine killed or not.
 
-    public Piece(boolean whitePiece){
-        this.giveWhite(whitePiece);
+    public Piece(boolean p){ //Constructor for pieces, white piece true or false
+        this.setWhite(p);
     }
 
-    public boolean giveWhite(boolean white){
-        return this.whitePiece = white;
+    public void setWhite(boolean white){ //to set piece white to true
+        this.white = white;
     }
+
+    public boolean getWhite(){ //to return white piece
+        return this.white;
+    }
+
+    public boolean isKilled ()  { //return killed piece
+        return this.killedPiece;
+    }
+
+    public void setKilledPiece(boolean killedPiece){ //kill a piece
+        this.killedPiece = killedPiece;
+    }
+
 
 }
