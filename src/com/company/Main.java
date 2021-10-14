@@ -6,5 +6,17 @@ public class Main {
 	Spot tiles = new Spot();
 	tiles.makeSpots();
 	Piece pawn = new Pawn(true);
+
+	pawn.setWhite(true);
+
+	if(pawn.getWhite()){
+		System.out.println("Hvid");
+	}
+
+	else{
+		System.out.println("black");
+	}
+
     }
+
 }

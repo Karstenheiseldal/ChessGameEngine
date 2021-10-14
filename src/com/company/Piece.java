@@ -12,7 +12,7 @@ public abstract class Piece {
         this.white = white;
     }
 
-    public boolean getWhite(){ //to return white piece
+    public boolean getWhite(){ //to return white a white or black piece
         return this.white;
     }
 
