@@ -4,7 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 	Spot tiles = new Spot();
-	tiles.makeSpots();
+	tiles.makeCoordinates();
+
+	//tiles.addpawn[x][y]
+		//print pawn.xy coordinates
+
 	Piece pawn = new Pawn(true);
 
 	pawn.setWhite(true);
@@ -16,6 +20,8 @@ public class Main {
 	else{
 		System.out.println("black");
 	}
+
+		System.out.println("x" + tiles.x+ " Y" + tiles.y);
 
     }
 
