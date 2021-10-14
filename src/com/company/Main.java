@@ -15,7 +15,6 @@ public class Main {
 		} else {
 			System.out.println("black");
 		}
-
 	}
 
 	public static void makeCoordinates() {
@@ -24,15 +23,17 @@ public class Main {
 
 
 		int spots = 0; //initial name for spot [0][0]
-		int[][] arr = new int[8][8]; //the range for the array
+		//the range for the array
 		//the i (x-axis) goes up one, and then the j (y-axis) goes up 8 and so on
 		for (x = 0; x < 8; x++) {
+
 			for (y = 0; y < 8; y++) {
-				System.out.println(x + " " + y);
+				Spot tile = new Spot(x,y);
+
 
 			}
 			System.out.println();//makes a new line everytime i=8.
 		}
-
+		Spot.set(1,3, "pawn");
 	}
 }

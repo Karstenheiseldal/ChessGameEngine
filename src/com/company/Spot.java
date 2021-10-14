@@ -1,12 +1,17 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Spot{
 int x;
 int y;
-int[][] arr;
+List[][] array = new ArrayList;
+
 boolean isOccupied;
 
-    public Spot(int x, int y){
+    public Spot(int x, int y)
+    {
         this.isOccupied = false;
         }
 
