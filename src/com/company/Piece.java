@@ -3,7 +3,7 @@ package com.company;
 public abstract class Piece {
     int x;
     int y;
-    Spot pieceSpot = new Spot(x, y);
+    Spot pieceSpot = new Spot();
     Boolean white = true; //Boolean to determine white/black (true/false)
     Boolean killedPiece = false; //to determine killed or not.
 
