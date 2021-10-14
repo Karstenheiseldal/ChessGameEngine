@@ -28,12 +28,11 @@ public class Main {
 		for (x = 0; x < 8; x++) {
 
 			for (y = 0; y < 8; y++) {
-				Spot tile = new Spot(x,y);
+				Spot tile = new Spot(x, y);
 
 
 			}
 			System.out.println();//makes a new line everytime i=8.
 		}
-		Spot.set(1,3, "pawn");
 	}
 }

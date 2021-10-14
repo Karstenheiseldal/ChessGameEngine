@@ -6,7 +6,7 @@ import java.util.List;
 public class Spot{
 int x;
 int y;
-List[][] array = new ArrayList;
+
 
 boolean isOccupied;
 
