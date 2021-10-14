@@ -1,20 +1,28 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Spot{
-int x;
-int y;
-boolean isOccupied;
 
-    public Spot()
+    public Piece piece;
+    int x;int y;
+    boolean isOccupied;
+
+    public Spot(int x, int y, Piece piece)
     {
-        this.isOccupied = false;
+        this.setPiece(piece);
+        this.setX(x);
+        this.setY(y);
         }
 
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
+    }
+
+    public void setPiece(Piece p){
+        this.piece = p;
+    }
+
+    public Piece getPiece(){
+        return this.piece;
     }
 
     public void setX(int x){
@@ -27,7 +35,7 @@ boolean isOccupied;
     }
     public int getY(){ return this.y;}
 
-    public static void makeCoordinates() {
+   /* public static void makeCoordinates() {
 
         int[][] array = new int[8][8];
 
@@ -39,10 +47,11 @@ boolean isOccupied;
                 spott.setY(j);
 
                 array[i][j] = array[spott.x][spott.y];
-                System.out.print(array[i][j]);
+                System.out.println(spott.x + " " + spott.y);
                 if (spott.isOccupied) System.out.println(1);
             }
             System.out.println();
-        }
+
+        }*/
+
     }
-}

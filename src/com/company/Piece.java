@@ -3,7 +3,6 @@ package com.company;
 public abstract class Piece {
     int x;
     int y;
-    Spot pieceSpot = new Spot();
     Boolean white = true; //Boolean to determine white/black (true/false)
     Boolean killedPiece = false; //to determine killed or not.
 
@@ -27,17 +26,12 @@ public abstract class Piece {
         this.killedPiece = killedPiece;
     }
 
-    public void setCoordinates(int x, int y){
-        pieceSpot.setX(x);
-        pieceSpot.setY(y);
-    }
-
     public Integer getX(){
-        int dummy = pieceSpot.getX();
+        int dummy = x;
         return dummy;
     }
     public Integer getY(){
-        int dummy = pieceSpot.getY();
+        int dummy = y;
         return dummy;
     }
 

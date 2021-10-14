@@ -4,14 +4,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		Piece pawn = new Pawn(true);
-		pawn.setWhite(true);
-		pawn.setCoordinates(1, 2);
+		pawn.setWhite(false);
+		Spot spots = new Spot(1,1, pawn);
 
-		Spot spots = new Spot();
-		Spot.makeCoordinates();
 
 		if (pawn.getWhite()) {
-			System.out.println("Hvid");
+			System.out.println("White");
 		} else {
 			System.out.println("black");
 		}
