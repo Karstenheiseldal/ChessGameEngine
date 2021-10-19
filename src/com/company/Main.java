@@ -10,10 +10,6 @@ public class Main {
 		System.out.println("x: "+spotfromindex.getX());
 		System.out.println("y: " +spotfromindex.getY());
 		System.out.println("White: " +spotfromindex.piece.getWhite());
-		/*if (pawn.getWhite()) {
-			System.out.println("White");
-		} else {
-			System.out.println("black");
-		}*/
+
 	}
 }
