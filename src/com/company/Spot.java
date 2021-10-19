@@ -3,7 +3,9 @@ package com.company;
 public class Spot{
 
     public Piece piece;
-    int x;int y;
+    int x;
+    int y;
+
     boolean isOccupied;
 
     public Spot(int x, int y, Piece piece)
@@ -34,24 +36,5 @@ public class Spot{
         return this.x;
     }
     public int getY(){ return this.y;}
-
-   /* public static void makeCoordinates() {
-
-        int[][] array = new int[8][8];
-
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-
-                Spot spott = new Spot();
-                spott.setX(i);
-                spott.setY(j);
-
-                array[i][j] = array[spott.x][spott.y];
-                System.out.println(spott.x + " " + spott.y);
-                if (spott.isOccupied) System.out.println(1);
-            }
-            System.out.println();
-
-        }*/
 
     }

@@ -3,16 +3,17 @@ package com.company;
 public class Main {
 
 	public static void main(String[] args) {
-		Piece pawn = new Pawn(true);
-		pawn.setWhite(false);
-		Spot spots = new Spot(1,1, pawn);
-		Boardgrid myBoard = new Boardgrid();
-		myBoard.boardreset();
 
-		if (pawn.getWhite()) {
+		Boardgrid myBoard = new Boardgrid();
+		Spot spotfromindex = myBoard.spotArray[6][4];
+		System.out.println(spotfromindex.getPiece());
+		System.out.println("x: "+spotfromindex.getX());
+		System.out.println("y: " +spotfromindex.getY());
+		System.out.println("White: " +spotfromindex.piece.getWhite());
+		/*if (pawn.getWhite()) {
 			System.out.println("White");
 		} else {
 			System.out.println("black");
-		}
+		}*/
 	}
 }

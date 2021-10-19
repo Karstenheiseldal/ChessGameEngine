@@ -1,8 +1,7 @@
 package com.company;
 
 public abstract class Piece {
-    int x;
-    int y;
+
     Boolean white = true; //Boolean to determine white/black (true/false)
     Boolean killedPiece = false; //to determine killed or not.
 
@@ -25,15 +24,5 @@ public abstract class Piece {
     public void setKilledPiece(boolean killedPiece){ //kill a piece
         this.killedPiece = killedPiece;
     }
-
-    public Integer getX(){
-        int dummy = x;
-        return dummy;
-    }
-    public Integer getY(){
-        int dummy = y;
-        return dummy;
-    }
-
 
 }
