@@ -6,7 +6,8 @@ public class Main {
 		Piece pawn = new Pawn(true);
 		pawn.setWhite(false);
 		Spot spots = new Spot(1,1, pawn);
-
+		Boardgrid myBoard = new Boardgrid();
+		myBoard.boardreset();
 
 		if (pawn.getWhite()) {
 			System.out.println("White");
@@ -14,5 +15,4 @@ public class Main {
 			System.out.println("black");
 		}
 	}
-
 }
