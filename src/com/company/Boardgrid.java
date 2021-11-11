@@ -3,11 +3,9 @@ package com.company;
 public class Boardgrid {
 
     Spot[][] spotArray = new Spot[8][8];
-
     public Boardgrid() {
         this.boardReset();
     }
-
     public Spot getspot(int x, int y) {
         return spotArray[x][y];
     }

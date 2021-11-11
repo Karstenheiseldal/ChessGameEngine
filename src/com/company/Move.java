@@ -12,4 +12,9 @@ public class Move {
         this.end = end;
         this.movingPiece = start.getPiece();
     }
+
+    public void makeMove(){
+        this.end.piece = this.start.piece;
+        this.start.piece = null;
+    }
 }
