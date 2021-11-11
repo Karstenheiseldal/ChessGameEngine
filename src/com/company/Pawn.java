@@ -1,6 +1,7 @@
 package com.company;
 
 public class Pawn extends Piece{
+
     public Pawn(boolean white){ //pawn constructor
         super(white); //inherited boolean
     }
@@ -11,4 +12,7 @@ public class Pawn extends Piece{
         }
         return false;
     }
-}
+
+/*
+    public static
+}*/}

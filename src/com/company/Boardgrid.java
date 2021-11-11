@@ -6,7 +6,7 @@ public class Boardgrid {
     public Boardgrid() {
         this.boardReset();
     }
-    public Spot getspot(int x, int y) {
+    public Spot getSpot(int x, int y) {
         return spotArray[x][y];
     }
 
