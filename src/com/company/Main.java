@@ -14,13 +14,13 @@ public class Main {
 		Player1 player1 = new Player1(true);
 
 		Move firstmove = new Move(myBoard, player1, spotfromindex, spotfromindex2);
-		System.out.println(spotfromindex2.getPiece());
 
 		try {
 			for (int j = 0; j < myBoard.spotArray.length; j++){
 				for (int i = 0; i < myBoard.spotArray.length; i++) {
 					Spot spot = myBoard.spotArray[j][i];
-					System.out.println(spot.getPiece() + " " + spot.piece.white);
+					if(spot.piece != null)
+					System.out.println(spot.piece.getClass().getSimpleName());
 				}
 
 			}
