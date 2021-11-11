@@ -13,10 +13,10 @@ public class Boardgrid {
     public void boardReset() {
         spotArray[0][0] = new Spot (0,0, new Pawn(true));
         spotArray[0][1] = new Spot (0,1, new Pawn(true));
-        spotArray[0][2] = new Spot (0,2, new Pawn(true));
+        spotArray[0][2] = new Spot (0,2, new Bishop(true));
         spotArray[0][3] = new Spot (0,3, new Pawn(true));
         spotArray[0][4] = new Spot (0,4, new Pawn(true));
-        spotArray[0][5] = new Spot (0,5, new Pawn(true));
+        spotArray[0][5] = new Spot (0,5, new Bishop(true));
         spotArray[0][6] = new Spot (0,6, new Pawn(true));
         spotArray[0][7] = new Spot (0,7, new Pawn(true));
         spotArray[1][0] = new Spot (1,0, new Pawn(true));
@@ -30,10 +30,10 @@ public class Boardgrid {
 
         spotArray[6][0] = new Spot (6,0, new Pawn(false));
         spotArray[6][1] = new Spot (6,1, new Pawn(false));
-        spotArray[6][2] = new Spot (6,2, new Pawn(false));
+        spotArray[6][2] = new Spot (6,2, new Bishop(false));
         spotArray[6][3] = new Spot (6,3, new Pawn(false));
         spotArray[6][4] = new Spot (6,4, new Pawn(false));
-        spotArray[6][5] = new Spot (6,5, new Pawn(false));
+        spotArray[6][5] = new Spot (6,5, new Bishop(false));
         spotArray[6][6] = new Spot (6,6, new Pawn(false));
         spotArray[6][7] = new Spot (6,7, new Pawn(false));
         spotArray[7][0] = new Spot (7,0, new Pawn(false));

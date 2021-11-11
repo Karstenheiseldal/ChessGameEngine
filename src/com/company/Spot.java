@@ -15,6 +15,7 @@ public class Spot{
         this.setY(y);
         }
 
+
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
     }

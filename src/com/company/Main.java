@@ -12,9 +12,9 @@ public class Main {
 		System.out.println("y: " +spotfromindex.getY());
 		System.out.println("White: " +spotfromindex.piece.getWhite());
 		Player1 player1 = new Player1(true);
-		Move firstmove = new Move(player1, spotfromindex, spotfromindex2);
+
+		Move firstmove = new Move(myBoard, player1, spotfromindex, spotfromindex2);
 		System.out.println(spotfromindex2.getPiece());
-		firstmove.makeMove();
-		System.out.println(spotfromindex2.getPiece());
+
 	}
 }

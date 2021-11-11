@@ -12,7 +12,6 @@ public abstract class Piece {
     public void setWhite(boolean white){ //to set piece white to true
         this.white = white;
     }
-
     public boolean getWhite(){ //to return white a white or black piece
         return this.white;
     }
