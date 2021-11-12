@@ -29,15 +29,12 @@ public class Display {
         //adding pictures of the pieces
         String imagePath = ("pics/bking.png");
         BufferedImage myPicture = ImageIO.read(new File(imagePath));
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+        JLabel picLabel = new JLabel(new ImageIcon(myPicture.getScaledInstance(64, 64, Image.SCALE_SMOOTH)));
+        picLabel.setBounds(64,64,64,64);
         JPanel jPanel = new JPanel();
         jPanel.add(picLabel);
-
-        picLabel.setBounds(64,64,100,100);
-        JFrame f = new JFrame();
-        f.setSize(new Dimension(myPicture.getWidth(), myPicture.getHeight()));
-        f.add(jPanel);
-        f.setVisible(true);
+        jPanel.setBounds(64,64,64,64);
+        frame.add(jPanel);
 
         //creating panels, which we color white and black
         JPanel panel = new JPanel() {
