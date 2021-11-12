@@ -1,14 +1,19 @@
 package com.company;
 
-import javax.imageio.plugins.jpeg.JPEGImageReadParam;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import java.io.File;
+import java.io.IOException;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-		/*Boardgrid myBoard = new Boardgrid();
+		Boardgrid myBoard = new Boardgrid();
 		Spot spotfromindex = myBoard.spotArray[0][2];
 		Spot spotfromindex2 = myBoard.spotArray[2][0];
 		System.out.println(spotfromindex.getPiece());
@@ -19,33 +24,9 @@ public class Main {
 		Move firstmove = new Move(player1, spotfromindex, spotfromindex2);
 		System.out.println(spotfromindex2.getPiece());
 		firstmove.makeMove();
-		System.out.println(spotfromindex2.getPiece());*/
-		Boardgrid myBoard = new Boardgrid();
+		System.out.println(spotfromindex2.getPiece());
+		Display.display();
+		//Boardgrid myBoard = new Boardgrid();
 
-		JFrame frame = new JFrame("Chess board");
-		frame.setBounds(10, 10, 512, 512);
-		frame.setUndecorated(true);
-		JPanel panel = new JPanel() {
-			@Override
-			public void paint(Graphics g) {
-				boolean white = true;
-				for (int i = 0; i < 8; i++) {
-					for (int j = 0; j < 8; j++) {
-						Spot spot = myBoard.spotArray[j][i];
-						if (white) {
-							g.setColor(Color.white.darker());
-						} else {
-							g.setColor(Color.black.brighter());
-						}
-						g.fillRect(i * 64, j * 64, 64, 64);
-						white = !white;
-					}
-					white = !white;
-				}
-			}
-		};
-		frame.add(panel);
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setVisible(true);
 	}
 }
