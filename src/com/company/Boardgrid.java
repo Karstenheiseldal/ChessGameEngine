@@ -39,8 +39,8 @@ public class Boardgrid {
         spotArray[7][0] = new Spot (7,0, new Rook(true));
         spotArray[7][1] = new Spot (7,1, new Knight(true));
         spotArray[7][2] = new Spot (7,2, new Bishop(true));
-        spotArray[7][3] = new Spot (7,3, new King(true));
-        spotArray[7][4] = new Spot (7,4, new Queen(true));
+        spotArray[7][3] = new Spot (7,3, new Queen(true));
+        spotArray[7][4] = new Spot (7,4, new King(true));
         spotArray[7][5] = new Spot (7,5, new Bishop(true));
         spotArray[7][6] = new Spot (7,6, new Knight(true));
         spotArray[7][7] = new Spot (7,7, new Rook(true));
