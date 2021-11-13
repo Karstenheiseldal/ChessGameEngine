@@ -3,7 +3,7 @@ package com.company;
 public class Spot{
 
     public Piece piece;
-    int x;
+    int x; //er dette nødvendig?
     int y;
 
     boolean isOccupied;
@@ -29,6 +29,7 @@ public class Spot{
 
     public void setX(int x){
         this.x = x;}
+
     public void setY(int y){
         this.y = y;}
 
