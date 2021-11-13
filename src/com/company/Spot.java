@@ -15,6 +15,7 @@ public class Spot{
         this.setY(y);
         }
 
+
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
     }
@@ -23,8 +24,12 @@ public class Spot{
         this.piece = p;
     }
 
-    public Piece getPiece(){
-        return this.piece;
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public String getPieceName(){
+        return this.piece.getClass().getSimpleName();
     }
 
     public void setX(int x){
@@ -37,5 +42,4 @@ public class Spot{
         return this.x;
     }
     public int getY(){ return this.y;}
-
     }
