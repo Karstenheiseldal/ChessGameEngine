@@ -6,7 +6,7 @@ public class Main {
 
 		Boardgrid myBoard = new Boardgrid();
 		Spot spotfromindex = myBoard.spotArray[6][0];
-		Spot spotfromindex2 = myBoard.spotArray[5][0];
+		Spot spotfromindex2 = myBoard.spotArray[4][0];
 
 		Player1 player1 = new Player1(true);
 
