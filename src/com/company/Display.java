@@ -12,20 +12,8 @@ import java.io.IOException;
 public class Display {
 
     public static void display() throws IOException {
-        //trying to import images and cropping each individual piece into an array of images.
-        /*Image all= ImageIO.read(new File("D:\\chess.png"));
-        Image imgs[]=new Image[12];
-        int ind=0;
-        for (int y=0;y<400;y+=200){
-            for (int x=0;x<1200;x+=200){
-                imgs[ind]=all.getGraphics(x,y,200,200).getScaledInstance(64,64,BufferedImage.SCALE_SMOOTH);
-                ind++;
-            }
-        }*/
-        //Creating the frame
-        JFrame frame = new JFrame("Chess board");
-        frame.setBounds(10, 10, 512, 512);
-        frame.setUndecorated(true);
+
+
         //adding pictures of the pieces
         String bkingPath = ("pics/bking.png");
         BufferedImage bking = ImageIO.read(new File(bkingPath));
@@ -74,8 +62,6 @@ public class Display {
 
                 for (int y = 0; y <= 7; y++) {
                     for (int x = 0; x <=7; x++) {
-                        System.out.println("x is : " + x);
-                        System.out.println("y is : " + y);
 
                         if (white) {
                             g.setColor(new Color(222, 184, 135));
@@ -88,61 +74,37 @@ public class Display {
                         Spot spotFromIndex = boardgrid.spotArray[y][x];
 
                         try {
-                            System.out.println(spotFromIndex.getPieceName());
-                            System.out.println(spotFromIndex.piece.getWhite());
-                            if (spotFromIndex.piece.getWhite()==true) {
-                                if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
-                                    System.out.println("white king");
-                                    g.drawImage(wking,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("queen")) {
-                                    System.out.println("white queen");
-                                    g.drawImage(wqueen,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("bishop")) {
-                                    System.out.println("white bishop");
-                                    g.drawImage(wbishop,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("rook")) {
-                                    System.out.println("white rook");
-                                    g.drawImage(wrook,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("knight")) {
-                                    System.out.println("white knight");
-                                    g.drawImage(wknight,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("pawn")) {
-                                    System.out.println("white pawn");
-                                    g.drawImage(wpawn,  x*64,  y*64, 64, 64, this);
-                                }
-                            } else if (spotFromIndex.piece.getWhite()==false) {
-                                if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
-                                    System.out.println("white king");
-                                    g.drawImage(bking,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("queen")) {
-                                    System.out.println("white queen");
-                                    g.drawImage(bqueen,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("bishop")) {
-                                    System.out.println("white bishop");
-                                    g.drawImage(bbishop,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("rook")) {
-                                    System.out.println("white rook");
-                                    g.drawImage(brook,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("knight")) {
-                                    System.out.println("white knight");
-                                    g.drawImage(bknight,  x*64,  y*64, 64, 64, this);
-                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("pawn")) {
-                                    System.out.println("white pawn");
-                                    g.drawImage(bpawn,  x*64,  y*64, 64, 64, this);
-                                }
+                            if (spotFromIndex.piece.getWhite()) {
+                                showPics(g, y, x, spotFromIndex, wking, wqueen, wbishop, wrook, wknight, wpawn);
+                            } else if (!spotFromIndex.piece.getWhite()) {
+                                showPics(g, y, x, spotFromIndex, bking, bqueen, bbishop, brook, bknight, bpawn);
                             }
-                        } catch (Exception e){
-                            System.out.println("spot is empty");
-                        }
-
+                        } catch (Exception e){}
                         white = !white;
-
                     }
                     white = !white;
                 }
             }
+            private void showPics(Graphics g, int y, int x, Spot spotFromIndex, BufferedImage king, BufferedImage queen, BufferedImage bishop, BufferedImage rook, BufferedImage knight, BufferedImage pawn) {
+                if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
+                    g.drawImage(king,  x*64,  y*64, 64, 64, this);
+                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("queen")) {
+                    g.drawImage(queen,  x*64,  y*64, 64, 64, this);
+                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("bishop")) {
+                    g.drawImage(bishop,  x*64,  y*64, 64, 64, this);
+                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("rook")) {
+                    g.drawImage(rook,  x*64,  y*64, 64, 64, this);
+                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("knight")) {
+                    g.drawImage(knight,  x*64,  y*64, 64, 64, this);
+                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("pawn")) {
+                    g.drawImage(pawn,  x*64,  y*64, 64, 64, this);
+                }
+            }
         };
         //frame.add(jPanel);
+        JFrame frame = new JFrame("Chess board");
+        frame.setBounds(10, 10, 512, 512);
+        frame.setUndecorated(true);
         frame.add(panel); //adding the panels(squares) into the frame
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         frame.setVisible(true); //makes it visible

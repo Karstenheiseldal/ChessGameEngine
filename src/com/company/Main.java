@@ -15,7 +15,7 @@ public class Main {
 
 
 		Boardgrid myBoard = new Boardgrid();
-
+		Display.display();
 		/*
 		Spot spotfromindex = myBoard.spotArray[0][2];
 		Spot spotfromindex2 = myBoard.spotArray[2][0];
@@ -30,7 +30,7 @@ public class Main {
 		System.out.println(spotfromindex2.getPiece());
 
 		 */
-		Display.display();
+
 
 		//Boardgrid myBoard = new Boardgrid();
 
