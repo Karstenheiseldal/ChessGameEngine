@@ -19,7 +19,7 @@ public class Move {
 
     public void makeMove() {
         if (movingPiece.legalMoveCheck(start,end)) {
-            this.end.piece = this.start.piece;
+            this.end.setPiece(start.piece);
             this.start.piece = null;
             this.end.piece.hasMoved = true;
             System.out.println(end.getX());

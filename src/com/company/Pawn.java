@@ -22,7 +22,13 @@ public class Pawn extends Piece {
         }
 
         if(end.isOccupied){
-            if(end)
+            if(end.piece.getWhite() != start.piece.getWhite()){
+                if(start.getPiece().getWhite()){
+                    if((start.getX() + 1) + (start.getY() + 1) == (end.getX()) + end.getY() || (start.getX() - 1) + (start.getY() + 1) == (end.getX()) + end.getY()){
+                        return super.legalMove;
+                    }
+                }
+            }
         }
         return super.legalMove = false;
     }

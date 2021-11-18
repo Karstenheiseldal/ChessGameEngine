@@ -21,12 +21,12 @@ public abstract class Piece {
 
     public abstract boolean legalMoveCheck(Spot start, Spot end);
 
-    public boolean isKilled ()  { //return killed piece
+    /*public boolean isKilled ()  { //return killed piece
         return this.killedPiece;
     }
 
     public void setKilledPiece(boolean killedPiece){ //kill a piece
         this.killedPiece = killedPiece;
-    }
+    }*/
 
 }
