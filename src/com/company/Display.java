@@ -76,7 +76,7 @@ public class Display {
                     for (int x = 0; x <=7; x++) {
                         System.out.println("x is : " + x);
                         System.out.println("y is : " + y);
-                        g.drawImage(bking,  x*64,  y*64, 64, 64, this);
+
                         if (white) {
                             g.setColor(new Color(222, 184, 135));
                         } else {
@@ -86,22 +86,49 @@ public class Display {
                         g.fillRect(x * 64, y * 64, 64, 64);
 
                         Spot spotFromIndex = boardgrid.spotArray[y][x];
+
                         try {
                             System.out.println(spotFromIndex.getPieceName());
                             System.out.println(spotFromIndex.piece.getWhite());
                             if (spotFromIndex.piece.getWhite()==true) {
-                                if (spotFromIndex.getPieceName() == "King") {
+                                if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
                                     System.out.println("white king");
-                                } else if (spotFromIndex.getPieceName() == "Queen") {
+                                    g.drawImage(wking,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("queen")) {
                                     System.out.println("white queen");
-                                } else if (spotFromIndex.getPieceName() == "Bishop") {
+                                    g.drawImage(wqueen,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("bishop")) {
                                     System.out.println("white bishop");
-                                } else if (spotFromIndex.getPieceName() == "Rook") {
+                                    g.drawImage(wbishop,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("rook")) {
                                     System.out.println("white rook");
-                                } else if (spotFromIndex.getPieceName() == "Knight") {
+                                    g.drawImage(wrook,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("knight")) {
                                     System.out.println("white knight");
-                                } else if (spotFromIndex.getPieceName() == "Pawn") {
+                                    g.drawImage(wknight,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("pawn")) {
                                     System.out.println("white pawn");
+                                    g.drawImage(wpawn,  x*64,  y*64, 64, 64, this);
+                                }
+                            } else if (spotFromIndex.piece.getWhite()==false) {
+                                if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
+                                    System.out.println("white king");
+                                    g.drawImage(bking,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("queen")) {
+                                    System.out.println("white queen");
+                                    g.drawImage(bqueen,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("bishop")) {
+                                    System.out.println("white bishop");
+                                    g.drawImage(bbishop,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("rook")) {
+                                    System.out.println("white rook");
+                                    g.drawImage(brook,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("knight")) {
+                                    System.out.println("white knight");
+                                    g.drawImage(bknight,  x*64,  y*64, 64, 64, this);
+                                } else if (spotFromIndex.getPieceName().equalsIgnoreCase("pawn")) {
+                                    System.out.println("white pawn");
+                                    g.drawImage(bpawn,  x*64,  y*64, 64, 64, this);
                                 }
                             }
                         } catch (Exception e){
