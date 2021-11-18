@@ -22,7 +22,9 @@ public class Spot{
     public void setPiece(Piece p){
         this.piece = p;
     }
-
+    public String getPieceName (){
+        return this.piece.getClass().getSimpleName();
+    }
     public Piece getPiece(){
         return this.piece;
     }

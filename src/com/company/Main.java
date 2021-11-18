@@ -13,7 +13,10 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
+
 		Boardgrid myBoard = new Boardgrid();
+
+		/*
 		Spot spotfromindex = myBoard.spotArray[0][2];
 		Spot spotfromindex2 = myBoard.spotArray[2][0];
 		System.out.println(spotfromindex.getPiece());
@@ -25,7 +28,10 @@ public class Main {
 		System.out.println(spotfromindex2.getPiece());
 		firstmove.makeMove();
 		System.out.println(spotfromindex2.getPiece());
+
+		 */
 		Display.display();
+
 		//Boardgrid myBoard = new Boardgrid();
 
 	}
