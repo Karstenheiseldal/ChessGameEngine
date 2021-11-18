@@ -17,7 +17,7 @@ public class Main {
 
 		Move firstmove = new Move(myBoard, player1, spotfromindex, spotfromindex2);
 		Move secondmove = new Move(myBoard,player2, spotfromindex3, spotfromindex4);
-		Move thirdmove = new Move(myBoard,player1,spotfrominjkldex5, spotfromindex6);
+		Move thirdmove = new Move(myBoard,player1,spotfromindex5, spotfromindex6);
 
 		firstmove.makeMove();
 		secondmove.makeMove();
