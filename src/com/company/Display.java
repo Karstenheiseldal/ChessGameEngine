@@ -11,10 +11,10 @@ import java.io.IOException;
 
 public class Display {
 
-    public static void display() throws IOException {
-
-
-        //adding pictures of the pieces
+    public static void display(Boardgrid b) throws IOException {
+         /*
+First, we load all the images from the pics file. We do this with buffered image with the piece name.
+ */
         String bkingPath = ("pics/bking.png");
         BufferedImage bking = ImageIO.read(new File(bkingPath));
 
@@ -50,11 +50,9 @@ public class Display {
 
         String wpawnPath = ("pics/wpawn.png");
         BufferedImage wpawn = ImageIO.read(new File(wpawnPath));
-
-        Boardgrid boardgrid = new Boardgrid();
-
-        //creating panels, which we color white and black
-
+        /*
+        creating panels, which we color white and black, and add pictures
+        */
         JPanel panel = new JPanel() {
             @Override
             public void paint(Graphics g) {
@@ -70,8 +68,10 @@ public class Display {
 
                         }
                         g.fillRect(x * 64, y * 64, 64, 64);
-
-                        Spot spotFromIndex = boardgrid.spotArray[y][x];
+                        /*
+                        setting the spot from spotArray to spotFromIndex, and checking the spot if white or black. Then calling showPics method.
+                         */
+                        Spot spotFromIndex = b.spotArray[y][x];
 
                         try {
                             if (spotFromIndex.piece.getWhite()) {
@@ -85,6 +85,9 @@ public class Display {
                     white = !white;
                 }
             }
+            /*
+            Method that shows the pictures, depending on the x and y. if the spot contains a king it will show king.
+             */
             private void showPics(Graphics g, int y, int x, Spot spotFromIndex, BufferedImage king, BufferedImage queen, BufferedImage bishop, BufferedImage rook, BufferedImage knight, BufferedImage pawn) {
                 if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
                     g.drawImage(king,  x*64,  y*64, 64, 64, this);
@@ -101,7 +104,6 @@ public class Display {
                 }
             }
         };
-        //frame.add(jPanel);
         JFrame frame = new JFrame("Chess board");
         frame.setBounds(10, 10, 512, 512);
         frame.setUndecorated(true);
