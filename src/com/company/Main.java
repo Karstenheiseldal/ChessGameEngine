@@ -1,12 +1,16 @@
 package com.company;
 
+import javax.swing.*;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		Boardgrid myBoard = new Boardgrid();
-		Spot spotfromindex = myBoard.spotArray[6][0];
-		Spot spotfromindex2 = myBoard.spotArray[4][0];
+		Spot spotfromindex = myBoard.spotArray[1][1];
+		Spot spotfromindex2 = myBoard.spotArray[2][1];
 
 		Player1 player1 = new Player1(true);
 
@@ -15,19 +19,21 @@ public class Main {
 
 		firstmove.makeMove();
 
-		try {
-			for (int j = 0; j < myBoard.spotArray.length; j++){
-				for (int i = 0; i < myBoard.spotArray.length; i++) {
-					Spot spot = myBoard.spotArray[j][i];
-					if(spot.piece != null)
-					System.out.print(" | "+spot.getX()+ ", " + spot.getY() + " " + spot.getPieceName());
+		Scanner inp = new Scanner(System.in);
+		System.out.println("X value of start");
+		int startX = inp.nextInt();
+		System.out.println("y value of start");
+		int startY = inp.nextInt();
+		System.out.println("end x");
+		int endX = inp.nextInt();
+		System.out.println("end y");
+		int endY = inp.nextInt();
+		Spot spotStart = myBoard.spotArray[startY][startX];
+		System.out.println(spotStart.getPieceName());
+		Spot spotEnd = myBoard.spotArray[endY][endX];
+		System.out.println(spotEnd.getPieceName());
+		Move secMove = new Move(myBoard, player1,spotStart, spotEnd);
 
-					else System.out.print(" | "+spot.x + ", " + spot.y + " free");
-				}
-				System.out.println();
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+
 	}
 }

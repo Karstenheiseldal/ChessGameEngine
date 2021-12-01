@@ -6,8 +6,8 @@ public class Boardgrid {
     public Boardgrid() {
         this.boardReset();
     }
-    public Spot getSpot(int x, int y) {
-        return spotArray[x][y];
+    public Spot getSpot(int y, int x) {
+        return spotArray[y][x];
     }
 
     public void boardReset() {
@@ -46,10 +46,13 @@ public class Boardgrid {
         spotArray[7][7] = new Spot (7,7, new Rook(true));
 
 
-        for (int i = 2; i < 6; i++) {
-            for (int j = 0; j < 8; j++) {
-                spotArray[i][j] = new Spot(i, j, null);
+        for (int y = 0; y < 8; y++) {
+            for (int x = 0; x < 8; x++) {
+                if (spotArray[y][x]==null){
+                    spotArray[y][x] = new Spot(y, x, null);
+                }
             }
         }
+
     }
 }

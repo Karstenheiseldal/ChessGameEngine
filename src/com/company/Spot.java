@@ -8,7 +8,7 @@ public class Spot{
 
     boolean isOccupied;
 
-    public Spot(int x, int y, Piece piece)
+    public Spot(int y, int x, Piece piece)
     {
         this.setPiece(piece);
         this.setX(x);

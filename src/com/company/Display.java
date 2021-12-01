@@ -111,4 +111,5 @@ First, we load all the images from the pics file. We do this with buffered image
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         frame.setVisible(true); //makes it visible
     }
+    public static void updateDisplay (){}
 }
