@@ -10,8 +10,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class Display {
+    JPanel panel;
+    JFrame frame;
 
-    public static void display(Boardgrid b) throws IOException {
+    public void display(Boardgrid b) throws IOException {
          /*
 First, we load all the images from the pics file. We do this with buffered image with the piece name.
  */
@@ -53,7 +55,7 @@ First, we load all the images from the pics file. We do this with buffered image
         /*
         creating panels, which we color white and black, and add pictures
         */
-        JPanel panel = new JPanel() {
+        this.panel = new JPanel() {
             @Override
             public void paint(Graphics g) {
                 boolean white = true;
@@ -104,11 +106,16 @@ First, we load all the images from the pics file. We do this with buffered image
                 }
             }
         };
-        JFrame frame = new JFrame("Chess board");
-        frame.setBounds(10, 10, 512, 512);
-        frame.setUndecorated(true);
-        frame.add(panel); //adding the panels(squares) into the frame
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
-        frame.setVisible(true); //makes it visible
+        this.frame = new JFrame("Chess board");
+        this.frame.setBounds(10, 10, 512, 512);
+        this.frame.setUndecorated(true);
+        this.frame.add(this.panel); //adding the panels(squares) into the frame
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
+        this.frame.setVisible(true); //makes it visible
+    }
+
+    public void updateFrame(){
+        this.frame.setVisible(false);
+        this.frame.setVisible(true);
     }
 }

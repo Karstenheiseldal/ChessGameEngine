@@ -3,12 +3,12 @@ package com.company;
 public class Spot{
 
     public Piece piece;
-    int x;
     int y;
+    int x;
 
     boolean isOccupied;
 
-    public Spot(int x, int y, Piece piece)
+    public Spot(int y, int x, Piece piece)
     {
         this.setPiece(piece);
         this.setX(x);
