@@ -7,7 +7,7 @@ public class Knight extends Piece{
     }
 
     @Override
-    public boolean legalMoveCheck(Spot start, Spot end) {
+    public boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid) {
         return true;
     }
 }

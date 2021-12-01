@@ -22,7 +22,7 @@ public class Move {
             this.end.piece = this.start.piece;
             this.start.piece = null;
             this.end.piece.hasMoved = true;
-            System.out.println(end.getX());
+
             System.out.println("Legal move");
             this.movingPiece.hasMoved = true;
             this.end.setOccupied(true);
@@ -33,9 +33,6 @@ public class Move {
         }
     }
     public boolean oppositeColor (Spot start, Spot end){
-        if (start.piece.getWhite() != end.piece.getWhite()) {
-            return true;
-        }
-        return false;
+        return start.piece.getWhite() != end.piece.getWhite();
     }
 }
