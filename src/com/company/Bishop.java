@@ -19,8 +19,8 @@ public class Bishop extends Piece {
             if (start.getY() < end.getY()) { //When the y-axis goes down (higher number)
                 if (start.getX() < end.getX()) { //and the x-axis goes right (higher number)
                     //looping through the spots between start and end, and checking if it's occupied
-                    for (int y = start.getY()+1, x = start.getX()+1; y <= end.getY() && x <= end.getX(); y++, x++) {
-                        if (b.spotArray[y][x].isOccupied) {
+                    for (int y = start.getY() + 1, x = start.getX() + 1; y <= end.getY() && x <= end.getX(); y++, x++) {
+                        if (b.spotArray[y][x].isOccupied && !start.piece.getWhite() != end.piece.getWhite()) { //double negation
                             System.out.println("1:  it's true since y is " + y + " and x is " + x);
                             bishopMove = false;
                         }
@@ -29,8 +29,8 @@ public class Bishop extends Piece {
                 }
                 if (start.getX() > end.getX()) { //and when the x-axis goes left (lower number)
                     //looping through the spots between start and end, and checking if it's occupied
-                    for (int y = start.getY()+1, x = start.getX()-1; y <= end.getY() && x >= end.getX(); y++, x--) {
-                        if (b.spotArray[y][x].isOccupied) {
+                    for (int y = start.getY() + 1, x = start.getX() - 1; y <= end.getY() && x >= end.getX(); y++, x--) {
+                        if (b.spotArray[y][x].isOccupied && !start.piece.getWhite() != end.piece.getWhite()) { //double negation
                             System.out.println("2  it's true since y is " + y + " and x is " + x);
                             bishopMove = false;
                         }
@@ -41,18 +41,19 @@ public class Bishop extends Piece {
             if (start.getY() > end.getY()) { //when the y axis goes up (lower number)
                 if (start.getX() < end.getX()) { //and the x-axis goes right (higher number)
                     //looping through the spots between start and end, and checking if it's occupied
-                    for (int y = start.getY()-1, x = start.getX()+1; y >= end.getY() && x <= end.getX(); y--, x++) {
-                        if (b.spotArray[y][x].isOccupied) {
+                    for (int y = start.getY() - 1, x = start.getX() + 1; y >= end.getY() && x <= end.getX(); y--, x++) {
+                        if (b.spotArray[y][x].isOccupied && !start.piece.getWhite() != end.piece.getWhite()) { //double negation
                             System.out.println("3  it's true since y is " + y + " and x is " + x);
                             bishopMove = false;
+
                         }
                     }
 
                 }
                 if (start.getX() > end.getX()) { //and when the x-axis goes left (lower number)
                     //looping through the spots between start and end, and checking if it's occupied
-                    for (int y = start.getY()-1, x = start.getX()-1; y >= end.getY() && x >= end.getX(); y--, x--) {
-                        if (b.spotArray[y][x].isOccupied) {
+                    for (int y = start.getY() - 1, x = start.getX() - 1; y >= end.getY() && x >= end.getX(); y--, x--) {
+                        if (b.spotArray[y][x].isOccupied && !start.piece.getWhite() != end.piece.getWhite()) { //double negation
                             System.out.println("4 it's true since y is " + y + " and x is " + x);
                             bishopMove = false;
                         }
@@ -60,6 +61,7 @@ public class Bishop extends Piece {
 
                 }
             }
+
             if (bishopMove) {
                 return true;
             }
