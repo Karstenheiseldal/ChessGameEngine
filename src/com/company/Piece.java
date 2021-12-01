@@ -2,7 +2,7 @@ package com.company;
 
 public abstract class Piece {
 
-    public boolean legalMove;
+    public boolean legalMove = false;
     Boolean white = true; //Boolean to determine white/black (true/false)
     Boolean killedPiece = false; //to determine killed or not.
 
@@ -13,6 +13,7 @@ public abstract class Piece {
     public void setWhite(boolean white){ //to set piece white to true
         this.white = white;
     }
+    boolean hasMoved = false;
     public boolean getWhite(){ //to return white a white or black piece
         return this.white;
     }
@@ -26,5 +27,4 @@ public abstract class Piece {
     public void setKilledPiece(boolean killedPiece){ //kill a piece
         this.killedPiece = killedPiece;
     }
-
 }

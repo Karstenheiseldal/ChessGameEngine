@@ -9,9 +9,19 @@ public class Pawn extends Piece {
     @Override
     public boolean legalMoveCheck(Spot start, Spot end) {
 
-        if ((start.getX() - end.getX()) == 1 && start.getX() != end.getX() ){
-            return super.legalMove = true;
+        if (hasMoved) {
+            if ((start.getX() - end.getX()) == 1 && start.getX() != end.getX()) {
+                return super.legalMove = true;
+            }
         }
+
+        if (!hasMoved){
+            if ((start.getX() - end.getX()) <= 2 && start.getX() != end.getX() ){
+                return super.legalMove = true;
+            }
+        }
+
+
         return super.legalMove = false;
     }
 }

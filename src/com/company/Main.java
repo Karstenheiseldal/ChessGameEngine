@@ -5,18 +5,18 @@ public class Main {
 	public static void main(String[] args) {
 
 		Boardgrid myBoard = new Boardgrid();
-		Spot moveFrom = myBoard.spotArray[6][0];
-		Spot moveTo = myBoard.spotArray[5][0];
+		Spot firstmoveSpot1 = myBoard.spotArray[6][0];
+		Spot firstmoveSpot2 = myBoard.spotArray[4][0];
+		Spot firstmoveSpot3 = myBoard.spotArray[1][1];
+		Spot firstmoveSpot4 = myBoard.spotArray[4][1];
+		Player player1 = new Player1(true);
+		Player player2 = new Player2(false);
 
-		Player1 player1 = new Player1(true);
+		Move firstmove = new Move(myBoard, player1, firstmoveSpot1, firstmoveSpot2);
+		firstmove.makeMove();
 
-		Move move = new Move(myBoard, player1, moveFrom, moveTo);
-		move.makeMove();
-
-		moveFrom = myBoard.spotArray[1][1];
-		moveTo = myBoard.spotArray[3][1];
-
-		move.makeMove();
+		Move secondmove = new Move(myBoard, player2, firstmoveSpot3, firstmoveSpot4);
+		secondmove.makeMove();
 
 
 

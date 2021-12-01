@@ -23,6 +23,7 @@ public class Move {
             this.start.piece = null;
             System.out.println(end.getX());
             System.out.println("Legal move");
+            this.movingPiece.hasMoved = true;
         } else {
             System.out.println("illegal move!");
         }
