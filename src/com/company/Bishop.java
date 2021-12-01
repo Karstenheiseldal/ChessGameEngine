@@ -11,6 +11,6 @@ public class Bishop extends Piece {
 
     @Override
     public boolean legalMoveCheck(Spot start, Spot end) {
-        return false;
+        return true;
     }
 }

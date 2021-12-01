@@ -52,7 +52,11 @@ public class Display {
         BufferedImage wpawn = ImageIO.read(new File(wpawnPath));
 
         Boardgrid boardgrid = new Boardgrid();
+        Player player = new Player1(true);
 
+        System.out.println(boardgrid.spotArray[1][1].getPieceName());
+        Move move = new Move(boardgrid,player, boardgrid.spotArray[1][1], boardgrid.spotArray[3][1]);
+        move.makeMove();
         //creating panels, which we color white and black
 
         JPanel panel = new JPanel() {
