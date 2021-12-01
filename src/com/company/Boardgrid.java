@@ -46,13 +46,19 @@ public class Boardgrid {
         spotArray[7][7] = new Spot (7,7, new Rook(true));
 
 
-        for (int y = 0; y < 8; y++) {
-            for (int x = 0; x < 8; x++) {
-                if (spotArray[y][x]==null){
-                    spotArray[y][x] = new Spot(y, x, null);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (spotArray[i][j] == null){
+                    spotArray[i][j] = new Spot(i, j, null);
+                }
+                if(spotArray[i][j].getPiece()!= null){
+                    spotArray[i][j].setOccupied(true);
                 }
             }
         }
+
+
+
 
     }
 }

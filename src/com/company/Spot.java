@@ -3,8 +3,8 @@ package com.company;
 public class Spot{
 
     public Piece piece;
-    int x; //er dette nødvendig?
     int y;
+    int x;
 
     boolean isOccupied;
 
@@ -15,7 +15,6 @@ public class Spot{
         this.setY(y);
         }
 
-
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
     }
@@ -23,18 +22,15 @@ public class Spot{
     public void setPiece(Piece p){
         this.piece = p;
     }
-
-    public Piece getPiece() {
-        return piece;
-    }
-
-    public String getPieceName(){
+    public String getPieceName (){
         return this.piece.getClass().getSimpleName();
+    }
+    public Piece getPiece(){
+        return this.piece;
     }
 
     public void setX(int x){
         this.x = x;}
-
     public void setY(int y){
         this.y = y;}
 
@@ -42,4 +38,5 @@ public class Spot{
         return this.x;
     }
     public int getY(){ return this.y;}
+
     }

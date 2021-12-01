@@ -11,25 +11,12 @@ public class Bishop extends Piece {
 
     @Override
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
-        int x = start.getX();
-        if (start.getY() < end.getY() && start.getX() < end.getX()){ //down and right
-            for (int y = start.getY(); y <= end.getY(); y++ ){
-                if (b.spotArray[y][x]==null){
-                        return true;
-                    }
-                x = x +1;
-                }
+
+        for (int y = start.getY(), x = start.getX(); x <= end.getX() && y <= end.getY(); y++, x++) {
+            if (b.spotArray[y][x] != null) {
+                return false;
             }
-
-        if (start.getY() < end.getY() && start.getX() > end.getX()){ //down and left
-
         }
-        if (start.getY() > end.getY() && start.getX() < end.getX()){ //up and right
-
-        }
-        if (start.getY() > end.getY() && start.getX() > end.getX()){ //up and left
-
-        }
-        return false;
+        return true;
     }
 }
