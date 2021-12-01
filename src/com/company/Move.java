@@ -18,7 +18,7 @@ public class Move {
     }
 
     public void makeMove() {
-        if (movingPiece.legalMoveCheck(start,end)) {
+        if (movingPiece.legalMoveCheck(start,end, myBoard)) {
             this.end.piece = this.start.piece;
             this.start.piece = null;
             this.end.piece.hasMoved = true;

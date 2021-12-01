@@ -10,10 +10,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class Display {
-    JPanel panel;
+    JPanel panel; //this class has a panel and a frame
     JFrame frame;
 
-    public void display(Boardgrid b) throws IOException {
+    public void display(Boardgrid b) throws IOException { //display graphics method
          /*
 First, we load all the images from the pics file. We do this with buffered image with the piece name.
  */
@@ -114,7 +114,7 @@ First, we load all the images from the pics file. We do this with buffered image
         this.frame.setVisible(true); //makes it visible
     }
 
-    public void updateFrame(){
+    public void updateFrame(){ //updates the frame
         this.frame.setVisible(false);
         this.frame.setVisible(true);
     }

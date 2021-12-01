@@ -13,13 +13,13 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-Boolean gamePlay =true;
+		Boolean gamePlay =true;
 		Boardgrid myboard = new Boardgrid();
-
 		Player player1 = new Player1(true);
 		Player player2 = new Player2(false);
 		Display display = new Display();
 		display.display(myboard);
+
 		while (gamePlay){
 			Scanner scanner1 = new Scanner(System.in);
 			display.updateFrame();
@@ -31,8 +31,6 @@ Boolean gamePlay =true;
 
 			Move nextMove = new Move(myboard,player1,myboard.spotArray[startY][startX], myboard.spotArray[endY][endX]);
 			nextMove.makeMove();
-
-
 		}
 	}
 }

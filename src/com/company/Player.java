@@ -11,7 +11,6 @@ public abstract class Player {
 
 class Player1 extends Player{
     public Player1(boolean white){
-
         this.white = true;
         this.player1 = true;
     }

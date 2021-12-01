@@ -8,7 +8,7 @@ public class Pawn extends Piece {
 
     @Override
 
-    public boolean legalMoveCheck(Spot start, Spot end) {
+    public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
 
             if (!hasMoved && start.getY() - end.getY() <= 2 && start.getY() - end.getY() >= (-2) && start.getX() == end.getX()) {
                 return true;
