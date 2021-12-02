@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 import java.util.Collection;
 
 import static java.lang.Math.abs;
-
 public class Bishop extends Piece {
 
     public Bishop(boolean white) { //Bishop constructor
@@ -97,7 +96,6 @@ public class Bishop extends Piece {
                             } catch (Exception e) {
                             }
                         }
-
                     }
                 }
             }
@@ -106,4 +104,3 @@ public class Bishop extends Piece {
         return false;
     }//end of legalMoveCheck
 }
-
