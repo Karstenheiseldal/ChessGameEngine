@@ -10,11 +10,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class Display {
+    JPanel panel; //this class has a panel and a frame
+    JFrame frame;
 
-    public static void display() throws IOException {
-
-
-        //adding pictures of the pieces
+    public void display(Boardgrid b) throws IOException { //display graphics method
+         /*
+First, we load all the images from the pics file. We do this with buffered image with the piece name.
+ */
         String bkingPath = ("pics/bking.png");
         BufferedImage bking = ImageIO.read(new File(bkingPath));
 
@@ -50,18 +52,10 @@ public class Display {
 
         String wpawnPath = ("pics/wpawn.png");
         BufferedImage wpawn = ImageIO.read(new File(wpawnPath));
-
-        Boardgrid boardgrid = new Boardgrid();
-        Player player1 = new Player1(true);
-        Player player2 = new Player2(false);
-        Move firstMove = new Move(boardgrid, player1, boardgrid.spotArray[1][0], boardgrid.spotArray[2][0]);
-        firstMove.makeMove();
-        firstMove.start = boardgrid.spotArray[2][0];
-        firstMove.end = boardgrid.spotArray[3][0];
-        firstMove.makeMove();
-        //creating panels, which we color white and black
-
-        JPanel panel = new JPanel() {
+        /*
+        creating panels, which we color white and black, and add pictures
+        */
+        this.panel = new JPanel() {
             @Override
             public void paint(Graphics g) {
                 boolean white = true;
@@ -76,8 +70,10 @@ public class Display {
 
                         }
                         g.fillRect(x * 64, y * 64, 64, 64);
-
-                        Spot spotFromIndex = boardgrid.spotArray[y][x];
+                        /*
+                        setting the spot from spotArray to spotFromIndex, and checking the spot if white or black. Then calling showPics method.
+                         */
+                        Spot spotFromIndex = b.spotArray[y][x];
 
                         try {
                             if (spotFromIndex.piece.getWhite()) {
@@ -91,6 +87,9 @@ public class Display {
                     white = !white;
                 }
             }
+            /*
+            Method that shows the pictures, depending on the x and y. if the spot contains a king it will show king.
+             */
             private void showPics(Graphics g, int y, int x, Spot spotFromIndex, BufferedImage king, BufferedImage queen, BufferedImage bishop, BufferedImage rook, BufferedImage knight, BufferedImage pawn) {
                 if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
                     g.drawImage(king,  x*64,  y*64, 64, 64, this);
@@ -107,12 +106,17 @@ public class Display {
                 }
             }
         };
-        //frame.add(jPanel);
-        JFrame frame = new JFrame("Chess board");
-        frame.setBounds(10, 10, 512, 512);
-        frame.setUndecorated(false);
-        frame.add(panel); //adding the panels(squares) into the frame
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
-        frame.setVisible(true); //makes it visible
+        this.frame = new JFrame("Chess board");
+        this.frame.setBounds(10, 10, 512, 512);
+        this.frame.setUndecorated(true);
+        this.frame.add(this.panel); //adding the panels(squares) into the frame
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
+        this.frame.setVisible(true); //makes it visible
     }
+
+    public void updateFrame(){ //updates the frame
+        this.frame.setVisible(false);
+        this.frame.setVisible(true);
+    }
+    public static void updateDisplay (){}
 }

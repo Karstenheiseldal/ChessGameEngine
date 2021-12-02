@@ -18,14 +18,21 @@ public class Move {
     }
 
     public void makeMove() {
-        if (movingPiece.legalMoveCheck(start,end)) {
-            this.end.setPiece(start.piece);
+        if (movingPiece.legalMoveCheck(start,end, myBoard)) {
+            this.end.piece = this.start.piece;
             this.start.piece = null;
             this.end.piece.hasMoved = true;
-            System.out.println(end.getX());
+
             System.out.println("Legal move");
+            this.movingPiece.hasMoved = true;
+            this.end.setOccupied(true);
+            this.start.setOccupied(false);
+
         } else {
             System.out.println("illegal move!");
         }
+    }
+    public boolean oppositeColor (Spot start, Spot end){
+        return start.piece.getWhite() != end.piece.getWhite();
     }
 }

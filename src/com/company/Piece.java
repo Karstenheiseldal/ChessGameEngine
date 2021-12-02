@@ -19,7 +19,7 @@ public abstract class Piece {
         return this.white;
     }
 
-    public abstract boolean legalMoveCheck(Spot start, Spot end);
+    public abstract boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid);
 
     /*public boolean isKilled ()  { //return killed piece
         return this.killedPiece;
