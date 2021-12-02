@@ -54,6 +54,8 @@ First, we load all the images from the pics file. We do this with buffered image
 
         String wpawnPath = ("pics/wpawn.png");
         BufferedImage wpawn = ImageIO.read(new File(wpawnPath));
+
+
         /*
         creating panels, which we color white and black, and add pictures
         */
@@ -114,10 +116,13 @@ First, we load all the images from the pics file. We do this with buffered image
         this.frame.add(this.panel); //adding the panels(squares) into the frame
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         this.frame.setVisible(true); //makes it visible
+        Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
+        frame.setIconImage(icon);
+
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
                 int x = e.getX()/64;
                 int y = e.getY()/64;
                 System.out.println(x + " . " + y);
@@ -130,6 +135,4 @@ First, we load all the images from the pics file. We do this with buffered image
         this.frame.setVisible(false);
         this.frame.setVisible(true);
     }
-
-    public static void updateDisplay (){}
 }
