@@ -3,6 +3,8 @@ package com.company;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -112,11 +114,21 @@ First, we load all the images from the pics file. We do this with buffered image
         this.frame.add(this.panel); //adding the panels(squares) into the frame
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         this.frame.setVisible(true); //makes it visible
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                int x = e.getX()/64;
+                int y = e.getY()/64;
+                System.out.println(x + " . " + y);
+                System.out.println(b.spotArray[y][x].getPieceName());
+            }
+        });
     }
 
     public void updateFrame(){ //updates the frame
         this.frame.setVisible(false);
         this.frame.setVisible(true);
     }
+
     public static void updateDisplay (){}
 }
