@@ -52,7 +52,13 @@ public class Display {
         BufferedImage wpawn = ImageIO.read(new File(wpawnPath));
 
         Boardgrid boardgrid = new Boardgrid();
-
+        Player player1 = new Player1(true);
+        Player player2 = new Player2(false);
+        Move firstMove = new Move(boardgrid, player1, boardgrid.spotArray[1][0], boardgrid.spotArray[2][0]);
+        firstMove.makeMove();
+        firstMove.start = boardgrid.spotArray[2][0];
+        firstMove.end = boardgrid.spotArray[3][0];
+        firstMove.makeMove();
         //creating panels, which we color white and black
 
         JPanel panel = new JPanel() {
@@ -104,7 +110,7 @@ public class Display {
         //frame.add(jPanel);
         JFrame frame = new JFrame("Chess board");
         frame.setBounds(10, 10, 512, 512);
-        frame.setUndecorated(true);
+        frame.setUndecorated(false);
         frame.add(panel); //adding the panels(squares) into the frame
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         frame.setVisible(true); //makes it visible

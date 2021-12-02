@@ -12,9 +12,6 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-
-
-		Boardgrid myBoard = new Boardgrid();
 		Display.display();
 		/*
 		Spot spotfromindex = myBoard.spotArray[0][2];
