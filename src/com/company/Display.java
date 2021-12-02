@@ -117,6 +117,7 @@ First, we load all the images from the pics file. We do this with buffered image
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                
                 int x = e.getX()/64;
                 int y = e.getY()/64;
                 System.out.println(x + " . " + y);
