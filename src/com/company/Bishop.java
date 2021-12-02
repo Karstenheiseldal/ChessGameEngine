@@ -20,57 +20,90 @@ public class Bishop extends Piece {
                 if (start.getX() < end.getX()) { //and the x-axis goes right (higher number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() + 1, x = start.getX() + 1; y <= end.getY() && x <= end.getX(); y++, x++) {
-                        if (b.spotArray[y][x].isOccupied && start.piece.getWhite() == end.piece.getWhite()) { //double negation
+                        if (b.spotArray[y][x].isOccupied) {
+                            if (start.getY()+1==end.getY() && start.getX()+1== end.getX() && start.piece.getWhite() != end.piece.getWhite()){
+                                return true;
+                            }
+                            System.out.println("1:  it's true since y is " + y + " and x is " + x);
                             return false;
                         }
-                        if (b.spotArray[y][x].isOccupied && start.piece.getWhite() != b.spotArray[x][y].piece.getWhite()){
-                            return true;
+                        if (!b.spotArray[y][x].isOccupied) {
+                            try {
+                                if (start.piece.getWhite() != end.piece.getWhite()) {
+                                    return true;
+                                }
+                            } catch (Exception e) {
+                            }
                         }
                     }
                 }
-
                 if (start.getX() > end.getX()) { //and when the x-axis goes left (lower number)
                     //looping through the spots between start and end, and checking if it's occupied
-                    for (int y = start.getY() - 1, x = start.getX() - 1; y <= end.getY() && x >= end.getX(); y++, x--) {
-                        if (b.spotArray[y][x].isOccupied && b.spotArray[y][x].getX() !=end.getX() && b.spotArray[y][x].getY() != end.getY()) {
+                    for (int y = start.getY() + 1, x = start.getX() - 1; y <= end.getY() && x >= end.getX(); y++, x--) {
+                        if (b.spotArray[y][x].isOccupied) { //double negation
+                            if (start.getY()+1==end.getY() && start.getX()-1== end.getX() && start.piece.getWhite() != end.piece.getWhite()){
+                                return true;
+                            }
                             System.out.println("2  it's true since y is " + y + " and x is " + x);
                             return false;
                         }
-                        if(b.spotArray[y][x].isOccupied && start.piece.getWhite() != end.piece.getWhite()){
-                            return true;
+                        if (!b.spotArray[y][x].isOccupied) {
+                            try {
+                                if (start.piece.getWhite() != end.piece.getWhite()) {
+                                    return true;
+                                }
+                            } catch (Exception e) {
+                            }
                         }
                     }
                 }
             }
-            if (start.getY() > end.getY()) { //when the y axis goes up (lower number)
+            if (start.getY() > end.getY()) { //when the y-axis goes up (lower number)
                 if (start.getX() < end.getX()) { //and the x-axis goes right (higher number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() - 1, x = start.getX() + 1; y >= end.getY() && x <= end.getX(); y--, x++) {
-                        if (b.spotArray[y][x].isOccupied && start.piece.getWhite() == end.piece.getWhite()) { //double negation
-                            //System.out.println("3  it's true since y is " + y + " and x is " + x);
+                        if (b.spotArray[y][x].isOccupied) {
+                            if (start.getY()-1==end.getY() && start.getX()+1== end.getX() && start.piece.getWhite() != end.piece.getWhite()){
+                                return true;
+                            }
+                            System.out.println("3  it's true since y is " + y + " and x is " + x);
                             return false;
                         }
-                        if(b.spotArray[y][x].isOccupied && start.piece.getWhite() != end.piece.getWhite()){
-                            return true;
+                        if (!b.spotArray[y][x].isOccupied) {
+                            try {
+                                if (start.piece.getWhite() != end.piece.getWhite()) {
+                                    return true;
+                                }
+                            } catch (Exception e) {
+                            }
                         }
                     }
                 }
                 if (start.getX() > end.getX()) { //and when the x-axis goes left (lower number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() - 1, x = start.getX() - 1; y >= end.getY() && x >= end.getX(); y--, x--) {
-                        if (b.spotArray[y][x].isOccupied && start.piece.getWhite() == end.piece.getWhite()) { //double negation
+                        if (b.spotArray[y][x].isOccupied) { //double negation
+                            if (start.getY()-1==end.getY() && start.getX()-1== end.getX() && start.piece.getWhite() != end.piece.getWhite()){
+                                return true;
+                            }
                             System.out.println("4 it's true since y is " + y + " and x is " + x);
                             return false;
                         }
-                        if (b.spotArray[y][x].isOccupied && start.piece.getWhite() != end.piece.getWhite()){
-                            return true;
+                        if (!b.spotArray[y][x].isOccupied) {
+                            try {
+                                if (start.piece.getWhite() != end.piece.getWhite()) {
+                                    return true;
+                                }
+                            } catch (Exception e) {
+                            }
                         }
-                    }
 
+                    }
                 }
             }
             return true;
-            }
-        return false;
         }
-    }//end of legelMoveCheck
+        return false;
+    }//end of legalMoveCheck
+}
+
