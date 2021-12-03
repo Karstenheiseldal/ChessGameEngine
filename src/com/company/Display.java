@@ -10,10 +10,19 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Display {
     JPanel panel; //this class has a panel and a frame
     JFrame frame;
+    int firstmouseX;
+    int firstmouseY;
+    int secondmouseX;
+    int secondmouseY;
+
+    boolean mouseClicked = false;
+    public ArrayList<Integer> moveList = new ArrayList<Integer>(3);
+
 
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
@@ -123,10 +132,19 @@ First, we load all the images from the pics file. We do this with buffered image
             @Override
             public void mousePressed(MouseEvent e) {
 
-                int x = e.getX()/64;
-                int y = e.getY()/64;
-                System.out.println(x + " . " + y);
-                System.out.println(b.spotArray[y][x].getPieceName());
+                    firstmouseX = e.getX() / 64;
+                    firstmouseY = e.getY() / 64;
+                    System.out.println(b.spotArray[firstmouseY][firstmouseX].getPieceName());
+                    moveList.add(0,firstmouseX);
+                    moveList.add(1, firstmouseY);
+                    System.out.println(moveList.get(0) + ", "+moveList.get(1));
+                }
+            public void mouseReleased(MouseEvent e){
+                moveList.clear();
+                //System.out.println(e.getClickCount());
+            }
+            public void mouseEntered(MouseEvent e){
+                //System.out.println("here comes the mouse");
             }
         });
     }
