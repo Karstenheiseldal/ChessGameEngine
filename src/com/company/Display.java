@@ -15,14 +15,9 @@ import java.util.ArrayList;
 public class Display {
     JPanel panel; //this class has a panel and a frame
     JFrame frame;
-    int firstmouseX;
-    int firstmouseY;
-    int secondmouseX;
-    int secondmouseY;
 
     boolean mouseClicked = false;
     public ArrayList<Integer> moveList = new ArrayList<Integer>();
-
 
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
@@ -156,7 +151,6 @@ First, we load all the images from the pics file. We do this with buffered image
     }
 
     public void updateFrame(){ //updates the frame
-        this.frame.setVisible(false);
-        this.frame.setVisible(true);
+        this.panel.updateUI();
     }
 }

@@ -21,12 +21,16 @@ public class Main {
 		Player player2 = new Player2(false);
 		Display display = new Display();
 
+		Integer currentPlayer = 1;
+
 		display.display(myboard);
 		System.out.println("choose new move");
 
 
 		System.out.println("choose new move");
+
 		while (gamestart) {
+
 			try {
 				while(display.moveList.size()<3){
 					Thread.sleep(1000);
