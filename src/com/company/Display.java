@@ -21,7 +21,7 @@ public class Display {
     int secondmouseY;
 
     boolean mouseClicked = false;
-    public ArrayList<Integer> moveList = new ArrayList<Integer>(3);
+    public ArrayList<Integer> moveList = new ArrayList<Integer>();
 
 
     public void display(Boardgrid b) throws IOException { //display graphics method
@@ -132,15 +132,21 @@ First, we load all the images from the pics file. We do this with buffered image
             @Override
             public void mousePressed(MouseEvent e) {
 
-                    firstmouseX = e.getX() / 64;
-                    firstmouseY = e.getY() / 64;
-                    System.out.println(b.spotArray[firstmouseY][firstmouseX].getPieceName());
-                    moveList.add(0,firstmouseX);
-                    moveList.add(1, firstmouseY);
-                    System.out.println(moveList.get(0) + ", "+moveList.get(1));
+                if (moveList.isEmpty()) {
+                        int mouseX = e.getX() / 64;
+                        int mouseY = e.getY() / 64;
+                        moveList.add(0,mouseY);
+                        moveList.add(1, mouseX);
+                    }
+                else if(!moveList.isEmpty()){
+                        int mouseX = e.getX() / 64;
+                        int mouseY = e.getY() / 64;
+                        moveList.add(2, mouseY);
+                        moveList.add(3, mouseX);
+                    }
+                    System.out.println("first click " + moveList.get(0) + "," + moveList.get(1) + " Second click" + moveList.get(2) + " " + moveList.get(3));
                 }
             public void mouseReleased(MouseEvent e){
-                moveList.clear();
                 //System.out.println(e.getClickCount());
             }
             public void mouseEntered(MouseEvent e){

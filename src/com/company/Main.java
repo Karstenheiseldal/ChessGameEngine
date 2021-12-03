@@ -20,6 +20,7 @@ public class Main {
 		Player player1 = new Player1(true);
 		Player player2 = new Player2(false);
 		Display display = new Display();
+
 		display.display(myboard);
 		System.out.println("choose new move");
 
@@ -27,10 +28,18 @@ public class Main {
 		System.out.println("choose new move");
 		while (gamestart) {
 			try {
-				Move move = new Move(myboard,player1,myboard.spotArray[display.moveList.get(0)][display.moveList.get(1)],myboard.spotArray[display.moveList.get(2)][display.moveList.get(3)]);
+				while(display.moveList.size()<3){
+					Thread.sleep(1000);
+					System.out.println("Waiting for move");
+				}
+				System.out.println(display.moveList.get(0) + "" + display.moveList.get(1));
+				Move move = new Move(myboard,player1,myboard.spotArray[display.moveList.get(0)][display.moveList.get(1)], myboard.spotArray[display.moveList.get(2)][display.moveList.get(3)]);
 				move.makeMove();
+				display.moveList.clear();
+				display.updateFrame();
 
 			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
 		}
 	}
