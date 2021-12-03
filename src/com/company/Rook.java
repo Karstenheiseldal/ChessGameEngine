@@ -45,13 +45,12 @@ boolean obstacles;
                 System.out.println("2 returning " + obstacles);
             }
             return checkObs(start, end, obstacles);
-
         }
         return false;
     }
         public boolean checkObs (Spot start, Spot end, boolean obstacles){
             //methods for returning if obstacles are not true. we check if the end piece is a different color.
-            if (!obstacles) {
+            if (!this.obstacles) {
                 try {
                     if (start.piece.getWhite() != end.piece.getWhite()) {
                         System.out.println("1 i'm returning true");
@@ -64,7 +63,7 @@ boolean obstacles;
             //method for returning false if there are obstacles.
             if (obstacles) {
                 System.out.println("1:  it's true since obstacles " + obstacles);
-                obstacles = false;
+                this.obstacles = false;
                 return false;
             }
             return false;
