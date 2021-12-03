@@ -9,6 +9,7 @@ public class Move {
     Spot end;
     Boardgrid myBoard;
 
+
     public Move(Boardgrid myBoard, Player player, Spot start, Spot end) {
         this.player = player;
         this.start = start;

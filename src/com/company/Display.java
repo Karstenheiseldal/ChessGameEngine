@@ -8,8 +8,10 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Display {
     JPanel panel; //this class has a panel and a frame
@@ -66,7 +68,7 @@ First, we load all the images from the pics file. We do this with buffered image
                 boolean white = true;
 
                 for (int y = 0; y <= 7; y++) {
-                    for (int x = 0; x <=7; x++) {
+                    for (int x = 0; x <= 7; x++) {
 
                         if (white) {
                             g.setColor(new Color(222, 184, 135));
@@ -86,28 +88,30 @@ First, we load all the images from the pics file. We do this with buffered image
                             } else if (!spotFromIndex.piece.getWhite()) {
                                 showPics(g, y, x, spotFromIndex, bking, bqueen, bbishop, brook, bknight, bpawn);
                             }
-                        } catch (Exception e){}
+                        } catch (Exception e) {
+                        }
                         white = !white;
                     }
                     white = !white;
                 }
             }
+
             /*
             Method that shows the pictures, depending on the x and y. if the spot contains a king it will show king.
              */
             private void showPics(Graphics g, int y, int x, Spot spotFromIndex, BufferedImage king, BufferedImage queen, BufferedImage bishop, BufferedImage rook, BufferedImage knight, BufferedImage pawn) {
                 if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
-                    g.drawImage(king,  x*64,  y*64, 64, 64, this);
+                    g.drawImage(king, x * 64, y * 64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("queen")) {
-                    g.drawImage(queen,  x*64,  y*64, 64, 64, this);
+                    g.drawImage(queen, x * 64, y * 64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("bishop")) {
-                    g.drawImage(bishop,  x*64,  y*64, 64, 64, this);
+                    g.drawImage(bishop, x * 64, y * 64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("rook")) {
-                    g.drawImage(rook,  x*64,  y*64, 64, 64, this);
+                    g.drawImage(rook, x * 64, y * 64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("knight")) {
-                    g.drawImage(knight,  x*64,  y*64, 64, 64, this);
+                    g.drawImage(knight, x * 64, y * 64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("pawn")) {
-                    g.drawImage(pawn,  x*64,  y*64, 64, 64, this);
+                    g.drawImage(pawn, x * 64, y * 64, 64, 64, this);
                 }
             }
         };
@@ -121,16 +125,14 @@ First, we load all the images from the pics file. We do this with buffered image
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                mouseclickX = e.getX() / 64;
                 mouseclickY = e.getY() / 64;
-                System.out.println(mouseclickX);
+                mouseclickX = e.getX() / 64;
             }
         });
     }
 
-    public void updateFrame(){ //updates the frame
+    public void updateFrame () { //updates the frame
         this.frame.setVisible(false);
         this.frame.setVisible(true);
     }
-    public static void updateDisplay (){}
 }

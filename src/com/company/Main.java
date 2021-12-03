@@ -12,25 +12,13 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-		Boolean gamePlay =true;
+	public static void main(String[] args) throws IOException, InterruptedException {
+		Boolean gamePlay = true;
 		Boardgrid myboard = new Boardgrid();
-		Player player1 = new Player1(true);
-		Player player2 = new Player2(false);
-		Display display = new Display();
-		display.display(myboard);
+		Player1 player1 = new Player1(true);
+		Player2 player2 = new Player2(false);
+		Match match = new Match(player1,player2,myboard);
+		match.startMatch();
 
-		while (gamePlay){
-			Scanner scanner1 = new Scanner(System.in);
-			display.updateFrame();
-			System.out.println("choose new move");
-			int startY = scanner1.nextInt();
-			int startX = scanner1.nextInt();
-			int endY = scanner1.nextInt();
-			int endX = scanner1.nextInt();
-
-			Move nextMove = new Move(myboard,player1,myboard.spotArray[startY][startX], myboard.spotArray[endY][endX]);
-			nextMove.makeMove();
-		}
 	}
 }
