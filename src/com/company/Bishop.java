@@ -82,7 +82,7 @@ public class Bishop extends Piece {
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() - 1, x = start.getX() - 1; y >= end.getY() && x >= end.getX(); y--, x--) {
                         if (b.spotArray[y][x].isOccupied) { //double negation
-                            if (start.getY()-1==end.getY() && start.getX()-1== end.getX() && start.piece.getWhite() != end.piece.getWhite()){
+                            if (start.getY()==end.getY() && start.getX()-1== end.getX() && start.piece.getWhite() != end.piece.getWhite()){
                                 return true;
                             }
                             System.out.println("4 it's true since y is " + y + " and x is " + x);

@@ -8,16 +8,21 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Display {
     JPanel panel; //this class has a panel and a frame
     JFrame frame;
-    int mouseclickX;
-    int mouseclickY;
+    int firstmouseX;
+    int firstmouseY;
+    int secondmouseX;
+    int secondmouseY;
+
+    boolean mouseClicked = false;
+    public ArrayList<Integer> moveList = new ArrayList<Integer>(3);
+
 
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
@@ -58,17 +63,18 @@ First, we load all the images from the pics file. We do this with buffered image
 
         String wpawnPath = ("pics/wpawn.png");
         BufferedImage wpawn = ImageIO.read(new File(wpawnPath));
+
+
         /*
         creating panels, which we color white and black, and add pictures
         */
-
         this.panel = new JPanel() {
             @Override
             public void paint(Graphics g) {
                 boolean white = true;
 
                 for (int y = 0; y <= 7; y++) {
-                    for (int x = 0; x <= 7; x++) {
+                    for (int x = 0; x <=7; x++) {
 
                         if (white) {
                             g.setColor(new Color(222, 184, 135));
@@ -88,30 +94,28 @@ First, we load all the images from the pics file. We do this with buffered image
                             } else if (!spotFromIndex.piece.getWhite()) {
                                 showPics(g, y, x, spotFromIndex, bking, bqueen, bbishop, brook, bknight, bpawn);
                             }
-                        } catch (Exception e) {
-                        }
+                        } catch (Exception e){}
                         white = !white;
                     }
                     white = !white;
                 }
             }
-
             /*
             Method that shows the pictures, depending on the x and y. if the spot contains a king it will show king.
              */
             private void showPics(Graphics g, int y, int x, Spot spotFromIndex, BufferedImage king, BufferedImage queen, BufferedImage bishop, BufferedImage rook, BufferedImage knight, BufferedImage pawn) {
                 if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
-                    g.drawImage(king, x * 64, y * 64, 64, 64, this);
+                    g.drawImage(king,  x*64,  y*64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("queen")) {
-                    g.drawImage(queen, x * 64, y * 64, 64, 64, this);
+                    g.drawImage(queen,  x*64,  y*64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("bishop")) {
-                    g.drawImage(bishop, x * 64, y * 64, 64, 64, this);
+                    g.drawImage(bishop,  x*64,  y*64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("rook")) {
-                    g.drawImage(rook, x * 64, y * 64, 64, 64, this);
+                    g.drawImage(rook,  x*64,  y*64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("knight")) {
-                    g.drawImage(knight, x * 64, y * 64, 64, 64, this);
+                    g.drawImage(knight,  x*64,  y*64, 64, 64, this);
                 } else if (spotFromIndex.getPieceName().equalsIgnoreCase("pawn")) {
-                    g.drawImage(pawn, x * 64, y * 64, 64, 64, this);
+                    g.drawImage(pawn,  x*64,  y*64, 64, 64, this);
                 }
             }
         };
@@ -121,17 +125,31 @@ First, we load all the images from the pics file. We do this with buffered image
         this.frame.add(this.panel); //adding the panels(squares) into the frame
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         this.frame.setVisible(true); //makes it visible
+        Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
+        frame.setIconImage(icon);
 
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                mouseclickY = e.getY() / 64;
-                mouseclickX = e.getX() / 64;
+
+                    firstmouseX = e.getX() / 64;
+                    firstmouseY = e.getY() / 64;
+                    System.out.println(b.spotArray[firstmouseY][firstmouseX].getPieceName());
+                    moveList.add(0,firstmouseX);
+                    moveList.add(1, firstmouseY);
+                    System.out.println(moveList.get(0) + ", "+moveList.get(1));
+                }
+            public void mouseReleased(MouseEvent e){
+                moveList.clear();
+                //System.out.println(e.getClickCount());
+            }
+            public void mouseEntered(MouseEvent e){
+                //System.out.println("here comes the mouse");
             }
         });
     }
 
-    public void updateFrame () { //updates the frame
+    public void updateFrame(){ //updates the frame
         this.frame.setVisible(false);
         this.frame.setVisible(true);
     }
