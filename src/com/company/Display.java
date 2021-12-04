@@ -3,15 +3,26 @@ package com.company;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Display {
     JPanel panel; //this class has a panel and a frame
     JFrame frame;
+    int firstmouseX;
+    int firstmouseY;
+    int secondmouseX;
+    int secondmouseY;
+
+    boolean mouseClicked = false;
+    public ArrayList<Integer> moveList = new ArrayList<Integer>(3);
+
 
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
@@ -52,6 +63,8 @@ First, we load all the images from the pics file. We do this with buffered image
 
         String wpawnPath = ("pics/wpawn.png");
         BufferedImage wpawn = ImageIO.read(new File(wpawnPath));
+
+
         /*
         creating panels, which we color white and black, and add pictures
         */
@@ -112,11 +125,32 @@ First, we load all the images from the pics file. We do this with buffered image
         this.frame.add(this.panel); //adding the panels(squares) into the frame
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         this.frame.setVisible(true); //makes it visible
+        Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
+        frame.setIconImage(icon);
+
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                    firstmouseX = e.getX() / 64;
+                    firstmouseY = e.getY() / 64;
+                    System.out.println(b.spotArray[firstmouseY][firstmouseX].getPieceName());
+                    moveList.add(0,firstmouseX);
+                    moveList.add(1, firstmouseY);
+                    System.out.println(moveList.get(0) + ", "+moveList.get(1));
+                }
+            public void mouseReleased(MouseEvent e){
+                moveList.clear();
+                //System.out.println(e.getClickCount());
+            }
+            public void mouseEntered(MouseEvent e){
+                //System.out.println("here comes the mouse");
+            }
+        });
     }
 
     public void updateFrame(){ //updates the frame
         this.frame.setVisible(false);
         this.frame.setVisible(true);
     }
-    public static void updateDisplay (){}
 }
