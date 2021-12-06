@@ -27,13 +27,11 @@ public class Main {
 		while (gamestart) {
 
 			try {
-				display.moveList.clear();
-				while(display.moveList.size()<3){
-					Thread.sleep(1000);
-				}
+				Display.moveList.clear();
+				while(Display.moveList.size()<3) Thread.sleep(1000);
 				Move move = new Move(myboard,player1,myboard.spotArray[Display.moveList.get(0)][Display.moveList.get(1)], myboard.spotArray[Display.moveList.get(2)][Display.moveList.get(3)]);
 				move.makeMove();
-				System.out.println("Start: " + Display.moveList.get(0) + " " + Display.moveList.get(1) + " and end:  " + Display.moveList.get(2) + " " + Display.moveList.get(3));
+				System.out.println(move.movingPieceName + " " + Display.moveList.get(0) + "," + Display.moveList.get(1) + " to " + Display.moveList.get(2) + "," + Display.moveList.get(3));
 				display.updateFrame();
 
 			} catch (Exception e) {
