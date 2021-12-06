@@ -16,8 +16,9 @@ public class Display {
     JPanel panel; //this class has a panel and a frame
     JFrame frame;
 
+    static  ArrayList<Integer> moveList = new ArrayList<Integer>(3);
+
     boolean mouseClicked = false;
-    public ArrayList<Integer> moveList = new ArrayList<Integer>();
 
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
@@ -65,7 +66,7 @@ First, we load all the images from the pics file. We do this with buffered image
         */
         this.panel = new JPanel() {
             @Override
-            public void paint(Graphics g) {
+            public void paint(Graphics g){
                 boolean white = true;
 
                 for (int y = 0; y <= 7; y++) {
@@ -123,23 +124,31 @@ First, we load all the images from the pics file. We do this with buffered image
         Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
         frame.setIconImage(icon);
 
-        panel.addMouseListener(new MouseAdapter() {
+        panel.addMouseListener(new MouseAdapter(){
             @Override
             public void mousePressed(MouseEvent e) {
 
                 if (moveList.isEmpty()) {
-                        int mouseX = e.getX() / 64;
-                        int mouseY = e.getY() / 64;
-                        moveList.add(0,mouseY);
+                    int mouseX = e.getX() / 64;
+                    int mouseY = e.getY() / 64;
+                    try {
+                        moveList.add(0, mouseY);
                         moveList.add(1, mouseX);
+                    } catch (IndexOutOfBoundsException f) {
+                        System.out.println(f.getMessage());
                     }
+                }
                 else if(!moveList.isEmpty()){
                         int mouseX = e.getX() / 64;
                         int mouseY = e.getY() / 64;
-                        moveList.add(2, mouseY);
-                        moveList.add(3, mouseX);
-                    }
-                    System.out.println("first click " + moveList.get(0) + "," + moveList.get(1) + " Second click" + moveList.get(2) + " " + moveList.get(3));
+                        try {
+                            moveList.add(2, mouseY);
+                            moveList.add(3, mouseX);
+
+                        } catch (IndexOutOfBoundsException g){
+                            System.out.println(g.getMessage());
+                        }
+                }
                 }
             public void mouseReleased(MouseEvent e){
                 //System.out.println(e.getClickCount());

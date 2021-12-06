@@ -21,25 +21,20 @@ public class Main {
 		Player player2 = new Player2(false);
 		Display display = new Display();
 
-		Integer currentPlayer = 1;
-
 		display.display(myboard);
-		System.out.println("choose new move");
-
-
 		System.out.println("choose new move");
 
 		while (gamestart) {
 
 			try {
+				display.moveList.clear();
 				while(display.moveList.size()<3){
 					Thread.sleep(1000);
 					System.out.println("Waiting for move");
 				}
-				System.out.println(display.moveList.get(0) + "" + display.moveList.get(1));
-				Move move = new Move(myboard,player1,myboard.spotArray[display.moveList.get(0)][display.moveList.get(1)], myboard.spotArray[display.moveList.get(2)][display.moveList.get(3)]);
+				Move move = new Move(myboard,player1,myboard.spotArray[Display.moveList.get(0)][Display.moveList.get(1)], myboard.spotArray[Display.moveList.get(2)][Display.moveList.get(3)]);
 				move.makeMove();
-				display.moveList.clear();
+				System.out.println("Start: " + Display.moveList.get(0) + " " + Display.moveList.get(1) + " and end:  " + Display.moveList.get(2) + " " + Display.moveList.get(3));
 				display.updateFrame();
 
 			} catch (Exception e) {
