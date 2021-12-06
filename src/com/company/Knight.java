@@ -12,15 +12,12 @@ public class Knight extends Piece{
         if(end.isOccupied && end.piece.getWhite() == start.piece.getWhite()){
             return false;
         }
-
         if (abs(start.getY() - end.getY()) == 1 && abs(start.getX() - end.getX()) == 2){
             return true;
         }
-
         if (!end.isOccupied && abs(start.getY() - end.getY()) == 2 && abs(start.getX() - end.getX()) == 1){
             return true;
         }
-
         return false;
     }
 }
