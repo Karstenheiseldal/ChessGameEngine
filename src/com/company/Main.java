@@ -30,7 +30,6 @@ public class Main {
 				display.moveList.clear();
 				while(display.moveList.size()<3){
 					Thread.sleep(1000);
-					System.out.println("Waiting for move");
 				}
 				Move move = new Move(myboard,player1,myboard.spotArray[Display.moveList.get(0)][Display.moveList.get(1)], myboard.spotArray[Display.moveList.get(2)][Display.moveList.get(3)]);
 				move.makeMove();
