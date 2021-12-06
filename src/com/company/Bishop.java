@@ -81,7 +81,7 @@ public class Bishop extends Piece {
                 if (start.getX() > end.getX()) { //and when the x-axis goes left (lower number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() - 1, x = start.getX() - 1; y >= end.getY() && x >= end.getX(); y--, x--) {
-                        if (b.spotArray[y][x].isOccupied) { //double negation
+                        if (b.spotArray[y][x].isOccupied) {
                             if (start.getY()==end.getY() && start.getX()-1== end.getX() && start.piece.getWhite() != end.piece.getWhite()){
                                 return true;
                             }

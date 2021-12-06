@@ -13,8 +13,9 @@ public class Pawn extends Piece {
             if (!hasMoved && start.getY() - end.getY() <= 2 && start.getY() - end.getY() >= (-2) && start.getX() == end.getX()) {
                 return true;
             }
-            //If pawn has moved, and it moves with less than one on the y-axis and none on the x-axis
-            if (start.getY() - end.getY() <= 1 && start.getY() - end.getY() >= (-1) && start.getX() == end.getX()) {
+            //If pawn has moved, and it
+        // moves with less than one on the y-axis and none on the x-axis
+            if (start.getY() - end.getY() <= 1 && start.getY() - end.getY() <= (-1) && start.getX() == end.getX()) {
                 return true;
             }
             /*
