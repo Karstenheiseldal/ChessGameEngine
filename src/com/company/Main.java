@@ -1,17 +1,4 @@
 package com.company;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
 public class Main {
 
 	public static void main(String[] args) throws Exception {
