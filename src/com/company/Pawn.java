@@ -12,17 +12,18 @@ public class Pawn extends Piece {
 
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
             //If pawn hasn't moved, and it moves with less than two on the y-axis and none on the x-axis
-            if (!hasMoved && abs(start.getY() - end.getY()) <= 2 && start.getX() == end.getX()) {
+            if (!hasMoved && abs(start.getY() - end.getY()) <= 2 && abs(start.getX()) == end.getX()) {
                 if(start.piece.getWhite() && start.getY() > end.getY()){
                     return true;
                 }
-                return !start.piece.getWhite() && start.getY() < end.getY();
+                if(!start.piece.getWhite() && start.getY() < end.getY())return true;
             }
             //If pawn has moved, and it
         // moves with less than one on the y-axis and none on the x-axis
-            if (abs(start.getY() - end.getY()) <= 1 && start.getX() == end.getX() && !end.isOccupied) {
-                if (start.piece.getWhite() && end.getY() < start.getY())
-                return true;
+            if (hasMoved && abs(start.getY() - end.getY()) <= 1 && start.getX() == end.getX() && !end.isOccupied) {
+                if (start.piece.getWhite() && end.getY() < start.getY()) return true;
+                if(!start.piece.getWhite() && end.getY() > start.getY()) return true;
+                return false;
             }
             /*
             If the end spot is occupied, and by a different color
@@ -35,12 +36,12 @@ public class Pawn extends Piece {
             if (end.isOccupied && start.piece.getWhite() != end.piece.getWhite()) {
 
                 if (start.piece.getWhite()) {
-                    if (start.getY() - 1 == end.getY() && start.getX() + 1 == end.getX()) {
+                    if (abs(start.getY()) - 1 == end.getY() && abs(start.getX()) + 1 == end.getX()) {
                         return true;
                     }
                     return start.getY() - 1 == end.getY() && start.getX() - 1 == end.getX();
                 } else if (!start.piece.getWhite()) {
-                    if (start.getY() + 1 == end.getY() && start.getX() + 1 == end.getX()) {
+                    if (abs(start.getY() + 1) == end.getY() && abs(start.getX()) + 1 == end.getX()) {
                         return true;
                     }
                     return start.getY() + 1 == end.getY() && start.getX() - 1 == end.getX();
