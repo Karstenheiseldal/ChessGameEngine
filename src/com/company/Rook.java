@@ -12,7 +12,6 @@ public class Rook extends Piece {
         public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) { //Method to check if a move is legal or not
 
             if (start.getY() != end.getY() && start.getX() == end.getX()) { //If first mouseclick Y is not the same as the second mouseclick Y, and the x is the same. The rook are moving upwards or downwards the y
-                int diffWithSignsY = abs(start.getY() + end.getY()) / (start.getY() + end.getY()); //Integer of the start Y and end Y divided by the start Y and end Y ??
 
                 //System.out.println("diff y" + diffWithSignsY);
                 if(start.getY() < end.getY()) { //is start less than end (higher on the board)
