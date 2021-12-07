@@ -1,5 +1,7 @@
 package com.company;
 
+import static java.lang.Math.abs;
+
 public class Pawn extends Piece {
 
     public Pawn(boolean white) { //pawn constructor
@@ -10,12 +12,18 @@ public class Pawn extends Piece {
 
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
             //If pawn hasn't moved, and it moves with less than two on the y-axis and none on the x-axis
-            if (!hasMoved && start.getY() - end.getY() <= 2 && start.getY() - end.getY() >= (-2) && start.getX() == end.getX()) {
+            if (!hasMoved && abs(start.getY() - end.getY()) <= 2 && start.getX() == end.getX()) {
+                if(start.piece.getWhite() && start.getY() > end.getY()){
                 return true;
+                }
+                if (!start.piece.getWhite() && start.getY() < end.getY()){
+                    return true;
+                }
+                return false;
             }
             //If pawn has moved, and it
         // moves with less than one on the y-axis and none on the x-axis
-            if (start.getY() - end.getY() <= 1 && start.getY() - end.getY() <= (-1) && start.getX() == end.getX()) {
+            if (abs(start.getY() - end.getY()) <= 1 && start.getX() == end.getX()) {
                 return true;
             }
             /*
