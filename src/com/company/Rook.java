@@ -15,19 +15,18 @@ public class Rook extends Piece {
                 int diffWithSignsY = abs(start.getY() + end.getY()) / (start.getY() + end.getY()); //Integer of the start Y and end Y divided by the start Y and end Y ??
 
                 //System.out.println("diff y" + diffWithSignsY);
-                if(start.getY() < end.getY()) {
+                if(start.getY() < end.getY()) { //is start less than end (higher on the board)
                     //Iterate through spotarray to find out if there is pieces on the
                     //System.out.println("diff y" + diffWithSignsY);
-                    for (int y = start.getY() + 1; y <= end.getY(); y++)
+                    for (int y = start.getY() + 1; y <= end.getY(); y++) //count array upwards from start y + 1
                         return !b.spotArray[y][start.getX()].isOccupied;
                 }
 
-                if(start.getY()>end.getY()){
-                    for (int y = start.getY()-1; y >= end.getY(); y--) { //Iterate through spotarray to find out if there is pieces on the
+                if(start.getY()>end.getY()){ //If start y is bigger than end y
+                    for (int y = start.getY()-1; y >= end.getY(); y--) { //count array downwards
                         if (b.spotArray[y][start.getX()].isOccupied) {
                             this.obstacles = true;
                             return false;
-                            //System.out.println("diff y" + diffWithSignsY);
                         }
                         else return true;
                     }
@@ -38,8 +37,8 @@ public class Rook extends Piece {
 
                  int diffWithSignsX = abs(start.getX() + end.getX()) / (start.getX() + end.getX());
 
-                 if(start.getX() > end.getX()) {
-                     for (int x = start.getX() -1; x >= end.getX(); x--) {
+                 if(start.getX() > end.getX()) { //if the start x is to the right of end x
+                     for (int x = start.getX() -1; x >= end.getX(); x--) { //count the array downwards from the square next to start x to the end x.
                          System.out.println("before the x loop " + diffWithSignsX);
                          if (b.spotArray[start.getY()][x].isOccupied) {
                              this.obstacles = true;
@@ -48,8 +47,8 @@ public class Rook extends Piece {
                      }
                  }
 
-                 if (start.getX() < end.getX()){
-                     for (int x = end.getX() + 1; x <= start.getX(); x++) { //Iterate through spotarray to find out if there is pieces on the
+                 if (start.getX() < end.getX()){ //if the start x is less than the end (to the left for end)
+                     for (int x = start.getX() + 1; x <= end.getX(); x++) { //Count array upwards to end x to see if any obstacles
                          if (b.spotArray[start.getY()][x].isOccupied) {
                              this.obstacles = true;
                              return false;
