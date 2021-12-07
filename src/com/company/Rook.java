@@ -45,7 +45,6 @@ boolean obstacles;
                 System.out.println("2 returning " + obstacles);
             }
             return checkObs(start, end, obstacles);
-
         }
         return false;
     }
