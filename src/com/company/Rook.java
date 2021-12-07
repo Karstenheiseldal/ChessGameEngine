@@ -52,16 +52,10 @@ public class Rook extends Piece {
                          if (b.spotArray[start.getY()][x].isOccupied) {
                              this.obstacles = true;
                              return false;
-                                    //System.out.println("diff y" + diffWithSignsY);
-                         } else return true;
+                         }
                      }
                  }
-                    //System.out.println("diff x" + diffWithSignsX + "diff y" + diffWithSignsX);
-                if (!obstacles) {
-                        return true;
-                    }
-                //System.out.println("2 returning " + obstacles);
-                else return true;
+                return !obstacles;
             }
             return false;
         }
