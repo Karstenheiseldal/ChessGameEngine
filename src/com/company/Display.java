@@ -124,11 +124,11 @@ First, we load all the images from the pics file. We do this with buffered image
         Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
         frame.setIconImage(icon);
 
-        panel.addMouseListener(new MouseAdapter(){
+        panel.addMouseListener(new MouseAdapter(){ //adding a mouselistener to the panel
             @Override
-            public void mousePressed(MouseEvent e) {
+            public void mousePressed(MouseEvent e) { //What happens when mouse is pressed
 
-                if (moveList.isEmpty()) {
+                if (moveList.isEmpty()) { //If the list of moves is empty, we add the y and x to dedicated indexes
                     int mouseX = e.getX() / 64;
                     int mouseY = e.getY() / 64;
                     try {
@@ -138,7 +138,7 @@ First, we load all the images from the pics file. We do this with buffered image
                         System.out.println(f.getMessage());
                     }
                 }
-                else if(!moveList.isEmpty()){
+                else if(!moveList.isEmpty()){ //If the list is not empty, that means index 0 and 1 is filled, and the y and x of the second click get index 2 and 3.
                         int mouseX = e.getX() / 64;
                         int mouseY = e.getY() / 64;
                         try {

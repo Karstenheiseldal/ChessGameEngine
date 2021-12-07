@@ -13,10 +13,10 @@ public class Pawn extends Piece {
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
             //If pawn hasn't moved, and it moves with less than two on the y-axis and none on the x-axis
             if (!hasMoved && abs(start.getY() - end.getY()) <= 2 && abs(start.getX()) == end.getX()) {
-                if(start.piece.getWhite() && start.getY() > end.getY()){
+                if(start.piece.getWhite() && start.getY() > end.getY() && !b.spotArray[start.getY()-1][start.getX()].isOccupied){
                     return true;
                 }
-                if(!start.piece.getWhite() && start.getY() < end.getY())return true;
+                if(!start.piece.getWhite() && start.getY() < end.getY() && !b.spotArray[start.getY()+1][start.getX()].isOccupied)return true;
             }
             //If pawn has moved, and it
         // moves with less than one on the y-axis and none on the x-axis
