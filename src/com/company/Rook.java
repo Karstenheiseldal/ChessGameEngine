@@ -6,7 +6,7 @@ public class Rook extends Piece{
     public Rook(boolean white){ //Rook constructor
         super(white); //inherited boolean
     }
-boolean obstacles;
+    boolean obstacles;
     @Override
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
 
@@ -18,10 +18,10 @@ boolean obstacles;
             for (int y = start.getY() + diffWithSignsY; y <= end.getY() - diffWithSignsY; y+=diffWithSignsY) {
                 if (b.spotArray[y][start.getX()].isOccupied) {
                     System.out.println("diff y" + diffWithSignsY);
-                    obstacles = true;
                     if (start.getY() +diffWithSignsY == end.getY() && start.piece.getWhite() != end.piece.getWhite()) {
                         return true;
                     }
+                    else return false;
                 }
                 System.out.println("1 returning " + obstacles);
             }
@@ -45,27 +45,28 @@ boolean obstacles;
                 System.out.println("2 returning " + obstacles);
             }
             return checkObs(start, end, obstacles);
+
         }
         return false;
     }
-        public boolean checkObs (Spot start, Spot end, boolean obstacles){
-            //methods for returning if obstacles are not true. we check if the end piece is a different color.
-            if (!obstacles) {
-                try {
-                    if (start.piece.getWhite() != end.piece.getWhite()) {
-                        System.out.println("1 i'm returning true");
-                        return true;
-                    }
-                } catch (NullPointerException e) {
+    public boolean checkObs (Spot start, Spot end, boolean obstacles){
+        //methods for returning if obstacles are not true. we check if the end piece is a different color.
+        if (!obstacles) {
+            try {
+                if (start.piece.getWhite() != end.piece.getWhite()) {
+                    System.out.println("1 i'm returning true");
                     return true;
                 }
+            } catch (NullPointerException e) {
+                return true;
             }
-            //method for returning false if there are obstacles.
-            if (obstacles) {
-                System.out.println("1:  it's true since obstacles " + obstacles);
-                obstacles = false;
-                return false;
-            }
+        }
+        //method for returning false if there are obstacles.
+        if (obstacles) {
+            System.out.println("1:  it's true since obstacles " + obstacles);
+            obstacles = false;
             return false;
         }
+        return false;
+    }
 }
