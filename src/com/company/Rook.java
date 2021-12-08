@@ -1,69 +1,71 @@
 package com.company;
+import static java.lang.Math.abs;
 
+public class Rook extends Piece{
 
-@SuppressWarnings("DuplicatedCode")
-public class Rook extends Piece {
-
-    public Rook(boolean white) { //Rook constructor
+    public Rook(boolean white){ //Rook constructor
         super(white); //inherited boolean
     }
-
+    boolean obstacles;
     @Override
-    public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) { //Method to check if a move is legal or not
-        /*
-        first check weather it is moving on the y-axis or x-axis. then if it's moving
-        up, down, left or right.
-        then loop through the spots between the start spot and end spot and check if occupied.
-         */
+    public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
+
         if (start.getY() != end.getY() && start.getX() == end.getX()) {
-            if (start.getY() < end.getY()) { //is start less than end (higher on the board)
-                //Iterate through spotArray to find out if there is pieces on the trajectory
+            int diffWithSignsY = abs(start.getY() + end.getY()) / (start.getY() + end.getY());
 
-                for (int y = start.getY() + 1; y < end.getY(); y++) { //count array down the chessboard from start y + 1
-                    //if a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
-                    if (b.spotArray[y][start.getX()].isOccupied) {
-                        this.obstacles = true;
-                        break;
-                    }
-                }
-                return checkObstacles(start, end, this.obstacles);
-            }
+            System.out.println("diff y" + diffWithSignsY);
 
-            if (start.getY() > end.getY()) { //If start y is bigger than end y
-                for (int y = start.getY() - 1; y > end.getY(); y--) { //count array downwards
-                    //if a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
-                    if (b.spotArray[y][start.getX()].isOccupied) {
-                        this.obstacles = true;
-                        break;
+            for (int y = start.getY() + diffWithSignsY; y <= end.getY() - diffWithSignsY; y+=diffWithSignsY) {
+                if (b.spotArray[y][start.getX()].isOccupied) {
+                    System.out.println("diff y" + diffWithSignsY);
+                    if (start.getY() +diffWithSignsY == end.getY() && start.piece.getWhite() != end.piece.getWhite()) {
+                        return true;
                     }
+                    else return false;
                 }
-                return checkObstacles(start, end, this.obstacles);
+                System.out.println("1 returning " + obstacles);
             }
+            return checkObs(start, end, obstacles);
         }
 
         if (start.getX() != end.getX() && start.getY() == end.getY()) {
 
-            if (start.getX() > end.getX()) { //if the start x is to the right of end x
-                for (int x = start.getX() - 1; x > end.getX(); x--) { //count the array downwards from the square next to start x to the end x.
-                    //if a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
-                    if (b.spotArray[start.getY()][x].isOccupied) {
-                        this.obstacles = true;
-                        break;
-                    }
-                }
-                return checkObstacles(start, end, this.obstacles);
-            }
+            int diffWithSignsX = abs(start.getX() + end.getX()) / (start.getX() + end.getX());
 
-            if (start.getX() < end.getX()) { //if the start x is less than the end (to the left for end)
-                for (int x = start.getX() + 1; x < end.getX(); x++) { //Count array upwards to end x to see if any obstacles
-                    //If a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
-                    if (b.spotArray[start.getY()][x].isOccupied) {
-                        this.obstacles = true;
-                        break;
+            for (int x = start.getX() + diffWithSignsX; x <= end.getX() - diffWithSignsX; x+=diffWithSignsX) {
+                System.out.println("before the x loop " + diffWithSignsX);
+                if (b.spotArray[start.getY()][x].isOccupied) {
+                    obstacles = true;
+
+                    System.out.println("diff x" + diffWithSignsX + "diff y" + diffWithSignsX);
+                    if (start.getX() +diffWithSignsX == end.getX() && start.piece.getWhite() != end.piece.getWhite()) {
+                        return true;
                     }
                 }
-                return checkObstacles(start, end, this.obstacles);
+                System.out.println("2 returning " + obstacles);
             }
+            return checkObs(start, end, obstacles);
+
+        }
+        return false;
+    }
+    public boolean checkObs (Spot start, Spot end, boolean obstacles){
+        //methods for returning if obstacles are not true. we check if the end piece is a different color.
+        if (!obstacles) {
+            try {
+                if (start.piece.getWhite() != end.piece.getWhite()) {
+                    System.out.println("1 i'm returning true");
+                    return true;
+                }
+            } catch (NullPointerException e) {
+                return true;
+            }
+        }
+        //method for returning false if there are obstacles.
+        if (obstacles) {
+            System.out.println("1:  it's true since obstacles " + obstacles);
+            obstacles = false;
+            return false;
         }
         return false;
     }
