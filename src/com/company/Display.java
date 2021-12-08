@@ -15,9 +15,12 @@ import java.util.ArrayList;
 public class Display {
     JPanel panel; //this class has a panel and a frame
     JFrame frame;
+    int mouseX;
+    int mouseY;
+    private Rectangle square;
 
     static  ArrayList<Integer> moveList = new ArrayList<Integer>(3);
-
+    boolean mouseClicked = false;
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
 First, we load all the images from the pics file. We do this with buffered image with the piece name.
@@ -72,9 +75,12 @@ First, we load all the images from the pics file. We do this with buffered image
 
                         if (white) {
                             g.setColor(new Color(222, 184, 135));
-                        } else {
-                            g.setColor(new Color(139, 69, 19));
+                        }
+                        if (mouseClicked){
 
+                        }
+                        else if (!white) {
+                            g.setColor(new Color(139, 69, 19));
                         }
                         g.fillRect(x * 64, y * 64, 64, 64);
                         /*
@@ -94,6 +100,11 @@ First, we load all the images from the pics file. We do this with buffered image
                     white = !white;
                 }
             }
+
+            public void highlight(Graphics g){
+
+            }
+
             /*
             Method that shows the pictures, depending on the x and y. if the spot contains a king it will show king.
              */
@@ -119,16 +130,17 @@ First, we load all the images from the pics file. We do this with buffered image
         this.frame.add(this.panel); //adding the panels(squares) into the frame
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //quit the program when you close the window
         this.frame.setVisible(true); //makes it visible
+
         Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
         frame.setIconImage(icon);
 
-        panel.addMouseListener(new MouseAdapter(){ //adding a mouselistener to the panel
+        panel.addMouseListener(new MouseAdapter(){
             @Override
-            public void mousePressed(MouseEvent e) { //What happens when mouse is pressed
-
-                if (moveList.isEmpty()) { //If the list of moves is empty, we add the y and x to dedicated indexes
-                    int mouseX = e.getX() / 64;
-                    int mouseY = e.getY() / 64;
+            public void mousePressed(MouseEvent e) {
+                mouseClicked = true;
+                if (moveList.isEmpty()) {
+                    mouseX = e.getX() / 64;
+                    mouseY = e.getY() / 64;
                     try {
                         moveList.add(0, mouseY);
                         moveList.add(1, mouseX);
@@ -136,13 +148,12 @@ First, we load all the images from the pics file. We do this with buffered image
                         System.out.println(f.getMessage());
                     }
                 }
-                else if(!moveList.isEmpty()){ //If the list is not empty, that means index 0 and 1 is filled, and the y and x of the second click get index 2 and 3.
+                else if(!moveList.isEmpty()){
                         int mouseX = e.getX() / 64;
                         int mouseY = e.getY() / 64;
                         try {
                             moveList.add(2, mouseY);
                             moveList.add(3, mouseX);
-
                         } catch (IndexOutOfBoundsException g){
                             System.out.println(g.getMessage());
                         }
