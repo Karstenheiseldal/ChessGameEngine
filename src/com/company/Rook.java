@@ -1,72 +1,84 @@
 package com.company;
 import static java.lang.Math.abs;
 
-public class Rook extends Piece{
+public class Rook extends Piece {
 
-    public Rook(boolean white){ //Rook constructor
+    public Rook(boolean white) { //Rook constructor
         super(white); //inherited boolean
     }
-    boolean obstacles;
-    @Override
-    public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
+        boolean obstacles = false;
 
-        if (start.getY() != end.getY() && start.getX() == end.getX()) {
-            int diffWithSignsY = abs(start.getY() + end.getY()) / (start.getY() + end.getY());
+        @Override
+        public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) { //Method to check if a move is legal or not
 
-            System.out.println("diff y" + diffWithSignsY);
+            if (start.getY() != end.getY() && start.getX() == end.getX()) { //If first mouseclick Y is not the same as the second mouseclick Y, and the x is the same. The rook are moving upwards or downwards the y
 
-            for (int y = start.getY() + diffWithSignsY; y <= end.getY() - diffWithSignsY; y+=diffWithSignsY) {
-                if (b.spotArray[y][start.getX()].isOccupied) {
-                    System.out.println("diff y" + diffWithSignsY);
-                    if (start.getY() +diffWithSignsY == end.getY() && start.piece.getWhite() != end.piece.getWhite()) {
-                        return true;
-                    }
-                    else return false;
+                //System.out.println("diff y" + diffWithSignsY);
+                if(start.getY() < end.getY()) { //is start less than end (higher on the board)
+                    //Iterate through spotarray to find out if there is pieces on the
+                    //System.out.println("diff y" + diffWithSignsY);
+                    for (int y = start.getY() + 1; y <= end.getY(); y++) //count array upwards from start y + 1
+                        return !b.spotArray[y][start.getX()].isOccupied;
                 }
-                System.out.println("1 returning " + obstacles);
-            }
-            return checkObs(start, end, obstacles);
-        }
 
-        if (start.getX() != end.getX() && start.getY() == end.getY()) {
-
-            int diffWithSignsX = abs(start.getX() + end.getX()) / (start.getX() + end.getX());
-
-            for (int x = start.getX() + diffWithSignsX; x <= end.getX() - diffWithSignsX; x+=diffWithSignsX) {
-                System.out.println("before the x loop " + diffWithSignsX);
-                if (b.spotArray[start.getY()][x].isOccupied) {
-                    obstacles = true;
-
-                    System.out.println("diff x" + diffWithSignsX + "diff y" + diffWithSignsX);
-                    if (start.getX() +diffWithSignsX == end.getX() && start.piece.getWhite() != end.piece.getWhite()) {
-                        return true;
+                if(start.getY()>end.getY()){ //If start y is bigger than end y
+                    for (int y = start.getY()-1; y >= end.getY(); y--) { //count array downwards
+                        if (b.spotArray[y][start.getX()].isOccupied) {
+                            this.obstacles = true;
+                            return false;
+                        }
+                        else return true;
                     }
                 }
-                System.out.println("2 returning " + obstacles);
             }
-            return checkObs(start, end, obstacles);
 
-        }
-        return false;
-    }
-    public boolean checkObs (Spot start, Spot end, boolean obstacles){
-        //methods for returning if obstacles are not true. we check if the end piece is a different color.
-        if (!obstacles) {
-            try {
-                if (start.piece.getWhite() != end.piece.getWhite()) {
-                    System.out.println("1 i'm returning true");
-                    return true;
-                }
-            } catch (NullPointerException e) {
-                return true;
+            if (start.getX() != end.getX() && start.getY() == end.getY()) {
+
+                 int diffWithSignsX = abs(start.getX() + end.getX()) / (start.getX() + end.getX());
+
+                 if(start.getX() > end.getX()) { //if the start x is to the right of end x
+                     for (int x = start.getX() -1; x >= end.getX(); x--) { //count the array downwards from the square next to start x to the end x.
+                         System.out.println("before the x loop " + diffWithSignsX);
+                         if (b.spotArray[start.getY()][x].isOccupied) {
+                             this.obstacles = true;
+                             return false;
+                         }
+                     }
+                 }
+
+                 if (start.getX() < end.getX()){ //if the start x is less than the end (to the left for end)
+                     for (int x = start.getX() + 1; x <= end.getX(); x++) { //Count array upwards to end x to see if any obstacles
+                         if (b.spotArray[start.getY()][x].isOccupied) {
+                             this.obstacles = true;
+                             return false;
+                         }
+                     }
+                 }
+                return !obstacles;
             }
-        }
-        //method for returning false if there are obstacles.
-        if (obstacles) {
-            System.out.println("1:  it's true since obstacles " + obstacles);
-            obstacles = false;
             return false;
         }
-        return false;
     }
-}
+
+// public boolean checkObs (Spot start, Spot end, boolean obstacles){
+//             //methods for returning if obstacles are not true. we check if the end piece is a different color.
+//             if (!obstacles) {
+//                 try {
+//                     if (start.piece.getWhite() != end.piece.getWhite()) {
+//                         System.out.println("1 i'm returning true");
+//                         return true;
+//                     }
+//                 } catch (NullPointerException e) {
+//                     System.out.println(e.getMessage());
+//                     return true;
+//                 }
+//             }
+//             //method for returning false if there are obstacles.
+//             if (this.obstacles) {
+//                 System.out.println("1:  it's true since obstacles " + obstacles);
+//                 this.obstacles = false;
+//                 return false;
+//             }
+//             return false;
+//         }
+// }
