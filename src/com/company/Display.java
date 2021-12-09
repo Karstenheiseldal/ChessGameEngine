@@ -15,14 +15,10 @@ import java.util.ArrayList;
 public class Display {
     JPanel panel; //this class has a panel and a frame
     JFrame frame;
-    int firstmouseX;
-    int firstmouseY;
-    int secondmouseX;
-    int secondmouseY;
+
+    static  ArrayList<Integer> moveList = new ArrayList<Integer>(3);
 
     boolean mouseClicked = false;
-    public ArrayList<Integer> moveList = new ArrayList<Integer>(3);
-
 
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
@@ -70,7 +66,7 @@ First, we load all the images from the pics file. We do this with buffered image
         */
         this.panel = new JPanel() {
             @Override
-            public void paint(Graphics g) {
+            public void paint(Graphics g){
                 boolean white = true;
 
                 for (int y = 0; y <= 7; y++) {
@@ -128,19 +124,33 @@ First, we load all the images from the pics file. We do this with buffered image
         Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
         frame.setIconImage(icon);
 
-        panel.addMouseListener(new MouseAdapter() {
+        panel.addMouseListener(new MouseAdapter(){ //adding a mouselistener to the panel
             @Override
-            public void mousePressed(MouseEvent e) {
+            public void mousePressed(MouseEvent e) { //What happens when mouse is pressed
 
-                    firstmouseX = e.getX() / 64;
-                    firstmouseY = e.getY() / 64;
-                    System.out.println(b.spotArray[firstmouseY][firstmouseX].getPieceName());
-                    moveList.add(0,firstmouseX);
-                    moveList.add(1, firstmouseY);
-                    System.out.println(moveList.get(0) + ", "+moveList.get(1));
+                if (moveList.isEmpty()) { //If the list of moves is empty, we add the y and x to dedicated indexes
+                    int mouseX = e.getX() / 64;
+                    int mouseY = e.getY() / 64;
+                    try {
+                        moveList.add(0, mouseY);
+                        moveList.add(1, mouseX);
+                    } catch (IndexOutOfBoundsException f) {
+                        System.out.println(f.getMessage());
+                    }
+                }
+                else if(!moveList.isEmpty()){ //If the list is not empty, that means index 0 and 1 is filled, and the y and x of the second click get index 2 and 3.
+                        int mouseX = e.getX() / 64;
+                        int mouseY = e.getY() / 64;
+                        try {
+                            moveList.add(2, mouseY);
+                            moveList.add(3, mouseX);
+
+                        } catch (IndexOutOfBoundsException g){
+                            System.out.println(g.getMessage());
+                        }
+                }
                 }
             public void mouseReleased(MouseEvent e){
-                moveList.clear();
                 //System.out.println(e.getClickCount());
             }
             public void mouseEntered(MouseEvent e){
@@ -150,7 +160,6 @@ First, we load all the images from the pics file. We do this with buffered image
     }
 
     public void updateFrame(){ //updates the frame
-        this.frame.setVisible(false);
-        this.frame.setVisible(true);
+        this.panel.updateUI();
     }
 }

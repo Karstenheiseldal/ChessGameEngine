@@ -9,24 +9,28 @@ public class Move {
     Spot end;
     Boardgrid myBoard;
 
+
     public Move(Boardgrid myBoard, Player player, Spot start, Spot end) {
         this.player = player;
         this.start = start;
         this.end = end;
         this.movingPiece = start.getPiece();
         this.myBoard = myBoard;
+        this.movingPieceName = start.getPieceName();
     }
 
     public void makeMove() {
         if (movingPiece.legalMoveCheck(start,end, myBoard)) {
-            this.end.piece = this.start.piece;
-            this.start.piece = null;
-            this.end.piece.hasMoved = true;
+            if (this.end.piece != this.start.piece) {
+                this.end.piece = this.start.piece;
+                this.end.piece.hasMoved = true;
+                this.start.piece = null;
 
-            System.out.println("Legal move");
-            this.movingPiece.hasMoved = true;
-            this.end.setOccupied(true);
-            this.start.setOccupied(false);
+                System.out.println("Legal move");
+                this.movingPiece.hasMoved = true;
+                this.end.setOccupied(true);
+                this.start.setOccupied(false);
+            }
 
         } else {
             System.out.println("illegal move!");
