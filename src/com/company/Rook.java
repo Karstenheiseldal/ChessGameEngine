@@ -19,7 +19,7 @@ public class Rook extends Piece{
                 if (b.spotArray[y][start.getX()].isOccupied) {
                     System.out.println("diff y" + diffWithSignsY);
                     obstacles = true;
-                    if (start.getY() +diffWithSignsY == end.getY() && start.piece.getWhite() != end.piece.getWhite()) {
+                    if (start.getY() + diffWithSignsY == end.getY() && start.piece.getWhite() != end.piece.getWhite()) {
                         return true;
                     }
                 }

@@ -67,9 +67,11 @@ public class Bishop extends Piece {
     public boolean checkObs (Spot start, Spot end, boolean obstacles, int directionY, int directionX) {
         if (this.obstacles){
             this.obstacles = false;
-            if (start.getX()== end.getX()+directionX && end.piece.getWhite()!=start.piece.getWhite()){
+            if (start.getX() == end.getX()+directionX && end.piece.getWhite()!=start.piece.getWhite()){
                 return true;
-            } else return start.getY() == end.getY() + directionY && end.piece.getWhite() != start.piece.getWhite();
+            } else if (start.getY() == end.getY() + directionY && end.piece.getWhite() != start.piece.getWhite()){
+                return true;
+            }
         }
         if (!this.obstacles) {
             try {

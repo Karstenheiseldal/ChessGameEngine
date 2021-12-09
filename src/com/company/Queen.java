@@ -12,7 +12,7 @@ public class Queen extends Piece {
 
     @Override
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
-        /*
+
         if (start.getY() != end.getY() && start.getX() == end.getX()) {
             int diffWithSignsY = abs(start.getY() + end.getY()) / (start.getY() + end.getY());
 
@@ -26,9 +26,8 @@ public class Queen extends Piece {
                         return true;
                     }
                 }
-                System.out.println("1 returning " + obstacles);
             }
-            return checkObsR(start, end, obstacles);
+
         } else if (start.getX() != end.getX() && start.getY() == end.getY()) {
 
             int diffWithSignsX = abs(start.getX() + end.getX()) / (start.getX() + end.getX());
@@ -42,77 +41,71 @@ public class Queen extends Piece {
                         return true;
                     }
                 }
-                System.out.println("2 returning " + obstacles);
             }
-            return checkObsR(start, end, obstacles);
-        }
-        if (abs(start.getX() - end.getX()) == abs(start.getY() - end.getY())) { //if the absolute difference between the x-move and y-move
+            return checkObs(start, end, obstacles);
 
+        } else if (abs(start.getX() - end.getX()) == abs(start.getY() - end.getY())) { //if the absolute difference between the x-move and y-move
             if (start.getY() < end.getY()) { //When the y-axis goes down (higher number)
                 if (start.getX() < end.getX()) { //and the x-axis goes right (higher number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() + 1, x = start.getX() + 1; y < end.getY() && x < end.getX(); y++, x++) {
                         if (b.spotArray[y][x].isOccupied) {
+                            if (start.getX() == end.getX() - 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            } else if (start.getY() == end.getY() - 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            }
                             obstacles = true;
                         }
                     }
-                    return checkObsB(start, end, obstacles, 1, 1);
                 }
                 if (start.getX() > end.getX()) { //and when the x-axis goes left (lower number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() + 1, x = start.getX() - 1; y < end.getY() && x > end.getX(); y++, x--) {
                         if (b.spotArray[y][x].isOccupied) { //double negation
                             obstacles = true;
+                            if (start.getX() == end.getX() + 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            } else if (start.getY() == end.getY() - 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            }
                         }
                     }
-                    return checkObsB(start, end, obstacles, 1, -1);
                 }
             } else if (start.getY() > end.getY()) { //when the y-axis goes up (lower number)
                 if (start.getX() < end.getX()) { //and the x-axis goes right (higher number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() - 1, x = start.getX() + 1; y > end.getY() && x < end.getX(); y--, x++) {
                         if (b.spotArray[y][x].isOccupied) {
+                            if (start.getX() == end.getX() + 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            } else if (start.getY() == end.getY() - 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            }
                             obstacles = true;
                         }
                     }
-                    return checkObsB(start, end, obstacles, -1, 1);
                 }
                 if (start.getX() > end.getX()) { //and when the x-axis goes left (lower number)
                     //looping through the spots between start and end, and checking if it's occupied
                     for (int y = start.getY() - 1, x = start.getX() - 1; y > end.getY() && x > end.getX(); y--, x--) {
                         if (b.spotArray[y][x].isOccupied) { //double negation
+                            if (start.getX() == end.getX() + 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            } else if (start.getY() == end.getY() + 1 && end.piece.getWhite() != start.piece.getWhite()) {
+                                return true;
+                            }
                             obstacles = true;
                         }
                     }
-                    return checkObsB(start, end, obstacles, -1, -1);
                 }
             }
+            return checkObs(start,end, obstacles);
         }
-        return false;
-
+       return false;
     }
-        public boolean checkObsB (Spot start, Spot end, boolean obstacles, int directionY, int directionX) {
-            if (this.obstacles){
-                if (start.getX()== end.getX()+directionX && end.piece.getWhite()!=start.piece.getWhite()){
-                    return true;
-                } else if (start.getY() == end.getY() + directionY && end.piece.getWhite()!= start.piece.getWhite()) {
-                    return true;
-                }
-                obstacles = false;
-                return false;
-            }
-            if (!this.obstacles) {
-                try {
-                    if (start.piece.getWhite() != end.piece.getWhite()) {
-                        return true;
-                    }
-                } catch (Exception e) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    public boolean checkObsR (Spot start, Spot end, boolean obstacles){
+
+    public boolean checkObs(Spot start, Spot end, boolean obstacles) {
         //methods for returning if obstacles are not true. we check if the end piece is a different color.
         if (!this.obstacles) {
             try {
@@ -132,8 +125,5 @@ public class Queen extends Piece {
         }
         return false;
     }
-
-         */
-        return false;
-    }
 }
+
