@@ -19,14 +19,6 @@ public abstract class Piece {
     }
     public abstract boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid);
 
-
-    /*public boolean isKilled ()  { //return killed piece
-        return this.killedPiece;
-    }
-
-    public void setKilledPiece(boolean killedPiece){ //kill a piece
-        this.killedPiece = killedPiece;
-    }*/
     public boolean checkObstacles(Spot start, Spot end, boolean obstacles) {
         //methods for returning if obstacles are not true. we check if the end piece is a different color.
         if (!this.obstacles) {

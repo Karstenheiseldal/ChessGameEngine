@@ -9,10 +9,14 @@ public class King extends Piece{
 
     @Override
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid) {
-        if (end.isOccupied){
-            if (end.piece.getWhite() == start.piece.getWhite())return false;
-            else return true;
+        if (abs(start.getX() - end.getX()) <= 1 && abs(start.getY() - end.getY()) <= 1) {
+            if (end.isOccupied) {
+                if (end.piece.getWhite() == start.piece.getWhite()){
+                    return false;
+                }
+            }
+            return true;
         }
-        return abs(start.getX() - end.getX()) <= 1 && abs(start.getY() - end.getY()) <= 1;
+        return false;
     }
 }
