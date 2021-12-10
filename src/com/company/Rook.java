@@ -15,8 +15,15 @@ public class Rook extends Piece {
                 if(start.getY() < end.getY()) { //is start less than end (higher on the board)
                     //Iterate through spotarray to find out if there is pieces on the
 
-                    for (int y = start.getY() + 1; y <= end.getY(); y++) //count array down the chessboard from start y + 1
-                        return !b.spotArray[y][start.getX()].isOccupied;
+                    for (int y = start.getY() + 1; y < end.getY(); y++) //count array down the chessboard from start y + 1
+                        if(b.spotArray[y][start.getX()].isOccupied){
+                            if(!obstacles && start.piece.getWhite() != b.spotArray[y][start.getX()].piece.getWhite()){
+                                return true;
+                            }
+                            this.obstacles = true;
+                            return false;
+                        }
+                    return true;
                 }
 
                 if(start.getY()>end.getY()){ //If start y is bigger than end y
