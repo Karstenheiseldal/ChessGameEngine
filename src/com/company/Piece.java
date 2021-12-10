@@ -29,7 +29,7 @@ public abstract class Piece {
     }*/
     public boolean checkObstacles(Spot start, Spot end, boolean obstacles) {
         //methods for returning if obstacles are not true. we check if the end piece is a different color.
-        if (!obstacles) {
+        if (!this.obstacles) {
             try {
                 if (start.piece.getWhite() != end.piece.getWhite()) {
                     return true;
