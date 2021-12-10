@@ -7,8 +7,6 @@ public class Rook extends Piece {
         super(white); //inherited boolean
     }
 
-    boolean obstacles = false;
-
     @Override
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) { //Method to check if a move is legal or not
 
@@ -22,7 +20,7 @@ public class Rook extends Piece {
                         break;
                     }
                 }
-                return checkObs(start, end, obstacles);
+                return checkObstacles(start, end, this.obstacles);
             }
 
             if (start.getY() > end.getY()) { //If start y is bigger than end y
@@ -32,13 +30,11 @@ public class Rook extends Piece {
                         break;
                     }
                 }
-                return checkObs(start, end, obstacles);
+                return checkObstacles(start, end, this.obstacles);
             }
         }
 
         if (start.getX() != end.getX() && start.getY() == end.getY()) {
-
-            int diffWithSignsX = abs(start.getX() + end.getX()) / (start.getX() + end.getX());
 
             if (start.getX() > end.getX()) { //if the start x is to the right of end x
                 for (int x = start.getX() - 1; x > end.getX(); x--) { //count the array downwards from the square next to start x to the end x.
@@ -47,7 +43,7 @@ public class Rook extends Piece {
                         break;
                     }
                 }
-                return checkObs(start, end, obstacles);
+                return checkObstacles(start, end, this.obstacles);
             }
 
             if (start.getX() < end.getX()) { //if the start x is less than the end (to the left for end)
@@ -57,29 +53,8 @@ public class Rook extends Piece {
                         break;
                     }
                 }
-                return checkObs(start, end, obstacles);
+                return checkObstacles(start, end, this.obstacles);
             }
-        }
-        return false;
-    }
-
-    public boolean checkObs(Spot start, Spot end, boolean obstacles) {
-        //methods for returning if obstacles are not true. we check if the end piece is a different color.
-        if (!obstacles) {
-            try {
-                if (start.piece.getWhite() != end.piece.getWhite()) {
-                    return true;
-                }
-            } catch (NullPointerException e) {
-
-                return true;
-            }
-        }
-        //method for returning false if there are obstacles.
-        if (this.obstacles) {
-
-            this.obstacles = false;
-            return false;
         }
         return false;
     }

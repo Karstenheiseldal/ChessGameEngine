@@ -17,7 +17,7 @@ public class Knight extends Piece{
             return true;
         }
 
-        if (!end.isOccupied && abs(start.getY() - end.getY()) == 2 && abs(start.getX() - end.getX()) == 1){
+        if (abs(start.getY() - end.getY()) == 2 && abs(start.getX() - end.getX()) == 1){
             return true;
         }
 

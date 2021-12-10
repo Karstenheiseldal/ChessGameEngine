@@ -3,7 +3,8 @@ package com.company;
 public abstract class Piece {
 
     public boolean hasMoved = false;
-    Boolean white = true; //Boolean to determine white/black (true/false)
+    boolean white = true; //Boolean to determine white/black (true/false)
+    boolean obstacles = false;
     //Boolean killedPiece = false; //to determine killed or not.
 
 
@@ -18,6 +19,7 @@ public abstract class Piece {
     }
     public abstract boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid);
 
+
     /*public boolean isKilled ()  { //return killed piece
         return this.killedPiece;
     }
@@ -25,5 +27,21 @@ public abstract class Piece {
     public void setKilledPiece(boolean killedPiece){ //kill a piece
         this.killedPiece = killedPiece;
     }*/
-
+    public boolean checkObstacles(Spot start, Spot end, boolean obstacles) {
+        //methods for returning if obstacles are not true. we check if the end piece is a different color.
+        if (!obstacles) {
+            try {
+                if (start.piece.getWhite() != end.piece.getWhite()) {
+                    return true;
+                }
+            } catch (NullPointerException e) {
+                return true;
+            }
+        }
+        //method for returning false if there are obstacles.
+        if (this.obstacles) {
+            this.obstacles = false;
+        }
+        return false;
+    }
 }
