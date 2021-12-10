@@ -12,12 +12,10 @@ public class Rook extends Piece {
         public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) { //Method to check if a move is legal or not
 
             if (start.getY() != end.getY() && start.getX() == end.getX()) { //If first mouseclick Y is not the same as the second mouseclick Y, and the x is the same. The rook are moving upwards or downwards the y
-
-                //System.out.println("diff y" + diffWithSignsY);
                 if(start.getY() < end.getY()) { //is start less than end (higher on the board)
                     //Iterate through spotarray to find out if there is pieces on the
-                    //System.out.println("diff y" + diffWithSignsY);
-                    for (int y = start.getY() + 1; y <= end.getY(); y++) //count array upwards from start y + 1
+
+                    for (int y = start.getY() + 1; y <= end.getY(); y++) //count array down the chessboard from start y + 1
                         return !b.spotArray[y][start.getX()].isOccupied;
                 }
 
@@ -27,7 +25,9 @@ public class Rook extends Piece {
                             this.obstacles = true;
                             return false;
                         }
-                        else return true;
+                        if(!b.spotArray[y][start.getX()].isOccupied){
+                            return true;
+                        }
                     }
                 }
             }
@@ -43,13 +43,16 @@ public class Rook extends Piece {
                              this.obstacles = true;
                              return false;
                          }
+                         if(!b.spotArray[start.getY()][x].isOccupied){
+                             return true;
+                         }
                      }
                  }
 
                  if (start.getX() < end.getX()){ //if the start x is less than the end (to the left for end)
                      for (int x = start.getX() + 1; x <= end.getX(); x++) { //Count array upwards to end x to see if any obstacles
                          if (b.spotArray[start.getY()][x].isOccupied) {
-                             this.obstacles = true;
+
                              return false;
                          }
                      }
