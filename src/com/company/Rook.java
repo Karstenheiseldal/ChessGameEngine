@@ -1,6 +1,7 @@
 package com.company;
 
 
+@SuppressWarnings("DuplicatedCode")
 public class Rook extends Piece {
 
     public Rook(boolean white) { //Rook constructor
