@@ -5,7 +5,7 @@ public abstract class Piece {
     public boolean hasMoved = false;
     boolean white = true; //Boolean to determine white/black (true/false)
     boolean obstacles = false;
-    //Boolean killedPiece = false; //to determine killed or not.
+    Boolean killedPiece = false; //to determine killed or not.
 
 
     public Piece(boolean p){ //Constructor for pieces, white piece true or false
@@ -17,8 +17,18 @@ public abstract class Piece {
     public boolean getWhite(){ //to return white a white or black piece
         return this.white;
     }
-    public abstract boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid);
+    public void setKilled(boolean killedPiece){
+        this.killedPiece = killedPiece;
+    }
 
+    public boolean getKilled(){
+        return this.killedPiece;
+    }
+
+    public boolean getKilled(boolean killedPiece){
+        return killedPiece;
+    }
+    public abstract boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid);
     public boolean checkObstacles(Spot start, Spot end, boolean obstacles) {
         //methods for returning if obstacles are not true. we check if the end piece is a different color.
         if (!this.obstacles) {
