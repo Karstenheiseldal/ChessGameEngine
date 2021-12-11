@@ -168,6 +168,9 @@ First, we load all the images from the pics file. We do this with buffered image
         });
     }
 
+    public void endFame() {
+        System.exit(0);
+    }
     public void updateFrame(){ //updates the frame
         this.panel.updateUI();
     }
