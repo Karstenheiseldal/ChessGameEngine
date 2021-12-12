@@ -1,8 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
-import java.util.Collection;
-
 import static java.lang.Math.abs;
 
 public class Bishop extends Piece {
