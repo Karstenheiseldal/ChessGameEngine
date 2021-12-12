@@ -3,22 +3,18 @@ package com.company;
 public class Spot{
 
     public Piece piece;
+    boolean isOccupied;
     int y;
     int x;
 
-    boolean isOccupied;
-
-    public Spot(int y, int x, Piece piece)
-    {
+    public Spot(int y, int x, Piece piece) {
         this.setPiece(piece);
         this.setX(x);
         this.setY(y);
         }
-
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
     }
-
     public void setPiece(Piece p){
         this.piece = p;
     }
@@ -37,6 +33,7 @@ public class Spot{
     public int getX(){
         return this.x;
     }
-    public int getY(){ return this.y;}
-
+    public int getY() {
+        return this.y;
     }
+}
