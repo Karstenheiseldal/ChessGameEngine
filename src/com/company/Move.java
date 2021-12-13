@@ -48,7 +48,7 @@ public class Move {
             }
         } else {
             System.out.println("Illegal move");
-            illegal = true;
+            this.illegal = true;
         }
     }
 }
