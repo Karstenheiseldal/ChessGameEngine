@@ -19,30 +19,31 @@ public class Move {
     }
 
     public void makeMove() {
-        if (movingPiece.legalMoveCheck(start,end, myBoard)) {
+        if (movingPiece.legalMoveCheck(start, end, myBoard)) {
             if (this.end.piece != this.start.piece && this.player.white == this.start.piece.getWhite()) {
 
-                    if (end.isOccupied && end.getPieceName().equals("King")){
-                        System.out.println("Game over");
-                        System.exit(0);
+                if (end.isOccupied && end.getPieceName().equals("King")) {
+                    System.out.println("Game over");
+                    System.exit(0);
+                }
+                if (end.isOccupied) {
+                    this.end.piece.setKilled(true);
+                    if (end.piece.getWhite()) {
+                        System.out.println("White" + this.end.getPieceName() + " is killed");
                     }
-                    this.end.piece = this.start.piece;
-                    this.end.piece.hasMoved = true;
-                    this.start.piece = null;
+                    if (!end.piece.getWhite()) {
+                        System.out.println("Black" + this.end.getPieceName() + " is killed");
+                    }
+                }
+                this.end.piece = this.start.piece;
+                this.end.piece.hasMoved = true;
+                this.start.piece = null;
 
-                    System.out.println("Legal move");
-                    this.movingPiece.hasMoved = true;
-                    this.end.setOccupied(true);
-                    this.start.setOccupied(false);
-
+                System.out.println("Legal move");
+                this.movingPiece.hasMoved = true;
+                this.end.setOccupied(true);
+                this.start.setOccupied(false);
             }
-            else System.out.println("Illegal move");
-
-        } else {
-            System.out.println("illegal move!");
-        }
-    }
-    public boolean oppositeColor (Spot start, Spot end){
-        return start.piece.getWhite() != end.piece.getWhite();
+        } else System.out.println("Illegal move");
     }
 }

@@ -16,8 +16,6 @@ public class Display {
 
     static  ArrayList<Integer> moveList = new ArrayList<Integer>(3);
 
-    boolean mouseClicked = false;
-
     public void display(Boardgrid b) throws IOException { //display graphics method
          /*
 First, we load all the images from the pics file. We do this with buffered image with the piece name.
@@ -157,9 +155,6 @@ First, we load all the images from the pics file. We do this with buffered image
         });
     }
 
-    public void endFame() {
-        System.exit(0);
-    }
     public void updateFrame(){ //updates the frame
         this.panel.updateUI();
     }
