@@ -45,6 +45,8 @@ public class InitializeGame {
                     gamePhase = 2;
                 } else {
                     move.makeMove();
+
+                    System.out.println(move.movingPieceName + " " + Display.moveList.get(0) + "," + Display.moveList.get(1) + " to " + Display.moveList.get(2) + "," + Display.moveList.get(3));
                     display.updateFrame();
                     gamePhase = 1;
                 }
