@@ -8,6 +8,7 @@ public class Move {
     Spot start;
     Spot end;
     Boardgrid myBoard;
+    boolean illegal = false;
 
 
     public Move(Boardgrid myBoard, Player player, Spot start, Spot end) {
@@ -45,6 +46,9 @@ public class Move {
                 this.end.setOccupied(true);
                 this.start.setOccupied(false);
             }
-        } else System.out.println("Illegal move");
+        } else {
+            System.out.println("Illegal move");
+            illegal = true;
+        }
     }
 }
