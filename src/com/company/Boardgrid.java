@@ -6,9 +6,6 @@ public class Boardgrid {
     public Boardgrid() {
         this.boardReset();
     }
-    public Spot getSpot(int y, int x) {
-        return spotArray[y][x];
-    }
 
     public void boardReset() {
         spotArray[0][0] = new Spot (0,0, new Rook(false));

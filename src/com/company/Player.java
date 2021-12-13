@@ -1,7 +1,6 @@
 package com.company;
 
 public abstract class Player {
-    Piece opponentPiece;
     public boolean currentTurn;
     public boolean white;
     public boolean player1;
