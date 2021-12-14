@@ -6,7 +6,7 @@ public abstract class Piece {
     boolean white = true; //Boolean to determine white/black (true/false)
     boolean obstacles = false;
     boolean killedPiece = false; //to determine killed or not.
-
+    boolean castle;
 
     public Piece(boolean p){ //Constructor for pieces, white piece true or false
         this.setWhite(p);

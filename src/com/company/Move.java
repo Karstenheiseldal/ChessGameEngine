@@ -23,7 +23,20 @@ public class Move {
     public void makeMove() {
         if (movingPiece.legalMoveCheck(start, end, myBoard)) {
             if (this.end.piece != this.start.piece && this.player.white == this.start.piece.getWhite()) {
-
+                if(this.start.piece.castle){
+                    if(start.getX() < end.getX()){
+                        this.myBoard.spotArray[start.getY()][start.getX() +2].setPiece(start.getPiece());
+                        this.myBoard.spotArray[start.getY()][start.getX()+1].setPiece(myBoard.spotArray[start.getY()][start.getX()+3].getPiece());
+                        this.myBoard.spotArray[start.getY()][start.getX()+3].piece=null;
+                        this.start.piece.castle = false;
+                    }
+                    else{
+                        this.myBoard.spotArray[start.getY()][2].setPiece(start.getPiece());
+                        this.myBoard.spotArray[start.getY()][3].setPiece(myBoard.spotArray[start.getY()][start.getX()-4].getPiece());
+                        this.myBoard.spotArray[start.getY()][start.getX()-4].piece=null;
+                        this.start.piece.castle = false;
+                    }
+                }
                 if (end.isOccupied && end.getPieceName().equals("King")) {
                     System.out.println("Game over");
                     System.exit(0);

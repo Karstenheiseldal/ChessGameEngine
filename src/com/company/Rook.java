@@ -6,14 +6,11 @@ public class Rook extends Piece{
     public Rook(boolean white){ //Rook constructor
         super(white); //inherited boolean
     }
-    boolean obstacles;
     @Override
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
 
         if (start.getY() != end.getY() && start.getX() == end.getX()) {
             int diffWithSignsY = abs(start.getY() + end.getY()) / (start.getY() + end.getY());
-
-            System.out.println("diff y" + diffWithSignsY);
 
             for (int y = start.getY() + diffWithSignsY; y <= end.getY() - diffWithSignsY; y+=diffWithSignsY) {
                 if (b.spotArray[y][start.getX()].isOccupied) {
@@ -23,7 +20,6 @@ public class Rook extends Piece{
                     }
                     else return false;
                 }
-                System.out.println("1 returning " + obstacles);
             }
             return checkObs(start, end, obstacles);
         }
