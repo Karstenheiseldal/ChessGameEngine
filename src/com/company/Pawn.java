@@ -23,8 +23,8 @@ public class Pawn extends Piece {
             //If pawn has moved, and it
         // moves with less than one on the y-axis and none on the x-axis
             if (hasMoved && abs(start.getY() - end.getY()) <= 1 && start.getX() == end.getX() && !end.isOccupied) {
-                if (start.piece.getWhite() && end.getY() < start.getY()) return true;
-                if(!start.piece.getWhite() && end.getY() > start.getY()) return true;
+                if (start.piece.getWhite() && end.getY() < start.getY()) return true; //white pawn 1 forward
+                if(!start.piece.getWhite() && end.getY() > start.getY()) return true; //black pawn 1 forward
                 return false;
             }
             /*
