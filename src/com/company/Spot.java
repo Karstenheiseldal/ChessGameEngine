@@ -1,7 +1,15 @@
 package com.company;
 
 public class Spot{
+/*
+The spot class holds information about the individual spots on the board
+Each spot is constructed with information about:
+the x- and y-coordinate
+If the spot is occupied
+which piece occupies it
+and has setters and getters for each of these informations.
 
+ */
     public Piece piece;
     boolean isOccupied;
     int y;

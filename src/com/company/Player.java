@@ -1,6 +1,11 @@
 package com.company;
 
 public abstract class Player {
+    /*
+    holds info about the player
+    which player has the turn
+    and which player is black or white
+     */
     public boolean currentTurn;
     public boolean white;
     public boolean player1;

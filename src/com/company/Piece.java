@@ -2,26 +2,36 @@ package com.company;
 
 public abstract class Piece {
 
+    //to determine if the piece has moved or not
     public boolean hasMoved = false;
-    boolean white = true; //Boolean to determine white/black (true/false)
+    //to determine white/black (true/false)
+    boolean white = true;
+    //to determine if legalMoveCheck found any obstacles between the start and end position
     boolean obstacles = false;
-    boolean killedPiece = false; //to determine killed or not.
+    //to determine if the piece is killed or not.
+    boolean killedPiece = false;
+    //to determine if castling is happening or not.
     boolean castle;
 
-    public Piece(boolean p){ //Constructor for pieces, white piece true or false
+    //Constructor for pieces, white piece true or false
+    public Piece(boolean p){
         this.setWhite(p);
     }
-    public void setWhite(boolean white){ //to set piece white to true
+    //to set piece white to true
+    public void setWhite(boolean white){
         this.white = white;
     }
-    public boolean getWhite(){ //to return white a white or black piece
+    //to return the white boolean for white or black piece
+    public boolean getWhite(){
         return this.white;
     }
+    //to set if the piece is killed or not
     public void setKilled(boolean killedPiece){
         this.killedPiece = killedPiece;
     }
 
     public abstract boolean legalMoveCheck(Spot start, Spot end, Boardgrid boardgrid);
+
     public boolean checkObstacles(Spot start, Spot end, boolean obstacles) {
         //methods for returning if obstacles are not true. we check if the end piece is a different color.
         if (!this.obstacles) {

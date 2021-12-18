@@ -66,10 +66,10 @@ First, we load all the images from the pics file. We do this with buffered image
             @Override
             public void paint(Graphics g){
                 boolean white = true;
-
+                //Looping through 8x8 squares
+                //Using the white boolean, to switch between dark and light squares
                 for (int y = 0; y <= 7; y++) {
                     for (int x = 0; x <=7; x++) {
-
                         if (white) {
                             g.setColor(new Color(222, 184, 135));
                         } else {
@@ -78,10 +78,10 @@ First, we load all the images from the pics file. We do this with buffered image
                         }
                         g.fillRect(x * 64, y * 64, 64, 64);
                         /*
-                        setting the spot from spotArray to spotFromIndex, and checking the spot if white or black. Then calling showPics method.
+                        setting the spot from spotArray to spotFromIndex, and checking the spot if white or black.
+                        Calling the showPics method, with either black or white piece pictures as arguments.
                          */
                         Spot spotFromIndex = b.spotArray[y][x];
-
                         try {
                             if (spotFromIndex.piece.getWhite()) {
                                 showPics(g, y, x, spotFromIndex, wking, wqueen, wbishop, wrook, wknight, wpawn);
@@ -95,7 +95,7 @@ First, we load all the images from the pics file. We do this with buffered image
                 }
             }
             /*
-            Method that shows the pictures, depending on the x and y. if the spot contains a king it will show king.
+            Method that shows the pictures, depending on the piece name from spotFromIndex. if the spot contains a king it will show king.
              */
             private void showPics(Graphics g, int y, int x, Spot spotFromIndex, BufferedImage king, BufferedImage queen, BufferedImage bishop, BufferedImage rook, BufferedImage knight, BufferedImage pawn) {
                 if (spotFromIndex.getPieceName().equalsIgnoreCase("king")) {
@@ -113,6 +113,13 @@ First, we load all the images from the pics file. We do this with buffered image
                 }
             }
         };
+        /*
+        Using JFrame we get the right display.
+        setBounds to get the correct placement and size
+        setUndecorated(true) to remove the outline of the frame
+        Adding the panel (which shows the squares and picture)
+        Close the program when the window is closed.
+         */
         this.frame = new JFrame("Chess board");
         this.frame.setBounds(10, 10, 512, 512);
         this.frame.setUndecorated(true);
@@ -122,11 +129,18 @@ First, we load all the images from the pics file. We do this with buffered image
         Image icon = Toolkit.getDefaultToolkit().getImage("pics/icon.png");
         frame.setIconImage(icon);
 
-        panel.addMouseListener(new MouseAdapter(){ //adding a mouselistener to the panel
+        //adding a mouselistener to the panel
+        panel.addMouseListener(new MouseAdapter(){
+            //Using a mousePressed method
             @Override
-            public void mousePressed(MouseEvent e) { //What happens when mouse is pressed
-
-                if (moveList.isEmpty()) { //If the list of moves is empty, we add the y and x to dedicated indexes
+            public void mousePressed(MouseEvent e) {
+            /*
+            Using the moveList, we add the y and x to dedicated indexes.
+            This enables the makeMove method to get coordinates from the user
+            To get the x- and y-coordinates of the startSpot we add to an empty list
+            To get the x- and y-coordinates of the endSpot we add to a non-empty list.
+             */
+                if (moveList.isEmpty()) {
                     int mouseX = e.getX() / 64;
                     int mouseY = e.getY() / 64;
                     try {

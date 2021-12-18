@@ -14,11 +14,11 @@ public class Rook extends Piece {
         then loop through the spots between the start spot and end spot and check if occupied.
          */
         if (start.getY() != end.getY() && start.getX() == end.getX()) {
-            if (start.getY() < end.getY()) { //is start less than end (higher on the board)
-                //Iterate through spotArray to find out if there is pieces on the trajectory
-
-                for (int y = start.getY() + 1; y < end.getY(); y++) { //count array down the chessboard from start y + 1
-                    //if a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
+            //is start y is higher and end y
+            if (start.getY() < end.getY()) {
+                //count array upwards between the start and end position
+                for (int y = start.getY() + 1; y < end.getY(); y++) {
+                    //if a spot is occupied, the obstacles boolean is set to true.
                     if (b.spotArray[y][start.getX()].isOccupied) {
                         this.obstacles = true;
                         break;
@@ -26,10 +26,11 @@ public class Rook extends Piece {
                 }
                 return checkObstacles(start, end, this.obstacles);
             }
-
-            if (start.getY() > end.getY()) { //If start y is bigger than end y
-                for (int y = start.getY() - 1; y > end.getY(); y--) { //count array downwards
-                    //if a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
+            //If start y is below the end y
+            if (start.getY() > end.getY()) {
+                //count array downwards between the start and end position
+                for (int y = start.getY() - 1; y > end.getY(); y--) {
+                    //if a spot is occupied, the obstacles boolean is set to true.
                     if (b.spotArray[y][start.getX()].isOccupied) {
                         this.obstacles = true;
                         break;
@@ -38,12 +39,12 @@ public class Rook extends Piece {
                 return checkObstacles(start, end, this.obstacles);
             }
         }
-
         if (start.getX() != end.getX() && start.getY() == end.getY()) {
-
-            if (start.getX() > end.getX()) { //if the start x is to the right of end x
-                for (int x = start.getX() - 1; x > end.getX(); x--) { //count the array downwards from the square next to start x to the end x.
-                    //if a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
+            //if the start x is to the right of end x
+            if (start.getX() > end.getX()) {
+                //Count array downwards between the start and end position.
+                for (int x = start.getX() - 1; x > end.getX(); x--) {
+                    //if a spot is occupied, the obstacles boolean is set to true.
                     if (b.spotArray[start.getY()][x].isOccupied) {
                         this.obstacles = true;
                         break;
@@ -51,10 +52,11 @@ public class Rook extends Piece {
                 }
                 return checkObstacles(start, end, this.obstacles);
             }
-
-            if (start.getX() < end.getX()) { //if the start x is less than the end (to the left for end)
-                for (int x = start.getX() + 1; x < end.getX(); x++) { //Count array upwards to end x to see if any obstacles
-                    //If a spot is occupied, the obstacles boolean is set to true, and we return the checkObstacles method.
+            //if the start x is left of the end x
+            if (start.getX() < end.getX()) {
+                //Count array upwards between the start and end position
+                for (int x = start.getX() + 1; x < end.getX(); x++) {
+                    //If a spot is occupied, the obstacles boolean is set to true.
                     if (b.spotArray[start.getY()][x].isOccupied) {
                         this.obstacles = true;
                         break;

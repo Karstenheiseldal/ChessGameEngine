@@ -10,11 +10,11 @@ public class Queen extends Piece {
 
     @Override
     public boolean legalMoveCheck(Spot start, Spot end, Boardgrid b) {
-/*
-This method uses the same algorithms as rook and bishop.
-To understand this, look at bishop and rook individually.
-Here we compine the two methods, and use the rook first and afterwards comes the bishop.
- */
+    /*
+    This method uses the same algorithms as rook and bishop.
+    To understand this, look at bishop and rook individually.
+    Here we compine the two methods, and use the rook first and afterwards comes the bishop.
+    */
         if (start.getY() != end.getY() && start.getX() == end.getX()) { //If first mouseclick Y is not the same as the second mouseclick Y, and the x is the same. The rook are moving upwards or downwards the y
             if (start.getY() < end.getY()) { //is start less than end (higher on the board)
                 //Iterate through spotarray to find out if there is pieces on the

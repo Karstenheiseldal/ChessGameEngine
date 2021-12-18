@@ -1,12 +1,22 @@
 package com.company;
 
 public class Boardgrid {
-
+/*
+To represent the board, we use a 2d array of spots
+ */
     Spot[][] spotArray = new Spot[8][8];
+    /*
+    Constructor to init and reset the board
+     */
     public Boardgrid() {
         this.boardReset();
     }
-
+    /*
+    First we assaign all the pieces to their designated start positions
+    Then loop through the 2d Array to:
+    Create empty spots where there are no pieces
+    and set the isOccupied boolean.
+     */
     public void boardReset() {
         spotArray[0][0] = new Spot (0,0, new Rook(false));
         spotArray[0][1] = new Spot (0,1, new Knight(false));
